@@ -211,12 +211,6 @@ const Orders = () => {
                                                                                         </span>
                                                                                         <span className="text-sm">
                                                                                             Kg
-                                                                                            Medio:{" "}
-                                                                                            {product?.mediumQuantity ||
-                                                                                                0}
-                                                                                        </span>
-                                                                                        <span className="text-sm">
-                                                                                            Kg
                                                                                             Verde:{" "}
                                                                                             {product?.greenQuantity ||
                                                                                                 0}
@@ -232,9 +226,6 @@ const Orders = () => {
                                                                                     <FormattedPrice
                                                                                         amount={
                                                                                             (product?.matureQuantity ||
-                                                                                                0) *
-                                                                                                product.price +
-                                                                                            (product?.mediumQuantity ||
                                                                                                 0) *
                                                                                                 product.price +
                                                                                             (product?.greenQuantity ||

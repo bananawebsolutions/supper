@@ -58,7 +58,6 @@ export interface ProductData {
     image: ImageAsset;
     quantity: number;
     matureQuantity: number;
-    mediumQuantity: number;
     greenQuantity: number;
     price: number;
     slug: Slug;

@@ -32,23 +32,6 @@ export const cartSlice = createSlice({
                 });
             }
         },
-        addToCartFruitVegetableMedium: (
-            state,
-            action: PayloadAction<{ item: ProductData; mediumQuantity: number }>
-        ) => {
-            const existingItem = state.cartItems.find(
-                (item) => item._id === action.payload.item._id
-            );
-
-            if (existingItem) {
-                existingItem.mediumQuantity = action.payload.mediumQuantity;
-            } else {
-                state.cartItems.push({
-                    ...action.payload.item,
-                    mediumQuantity: action.payload.mediumQuantity,
-                });
-            }
-        },
         addToCartFruitVegetableGreen: (
             state,
             action: PayloadAction<{ item: ProductData; greenQuantity: number }>
@@ -93,11 +76,6 @@ export const cartSlice = createSlice({
                         existingItem.matureQuantity =
                             (existingItem.matureQuantity || 0) +
                             newItem.matureQuantity;
-                    }
-                    if (newItem.mediumQuantity) {
-                        existingItem.mediumQuantity =
-                            (existingItem.mediumQuantity || 0) +
-                            newItem.mediumQuantity;
                     }
                     if (newItem.greenQuantity) {
                         existingItem.greenQuantity =
@@ -151,7 +129,6 @@ export const cartSlice = createSlice({
 export const {
     addToCart,
     addToCartFruitVegetableMature,
-    addToCartFruitVegetableMedium,
     addToCartFruitVegetableGreen,
     addToCartBatch,
     increaseQuantity,

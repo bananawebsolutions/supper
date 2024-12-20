@@ -112,13 +112,6 @@ const CartItem = ({ cart, item }: Props) => {
                                 Kg
                             </p>
                             <p className="text-sm font-semibold">
-                                <span>Medio: </span>
-                                {item?.mediumQuantity
-                                    ? item.mediumQuantity
-                                    : 0}{" "}
-                                Kg
-                            </p>
-                            <p className="text-sm font-semibold">
                                 <span>Verde: </span>
                                 {item?.greenQuantity
                                     ? item.greenQuantity
@@ -136,9 +129,6 @@ const CartItem = ({ cart, item }: Props) => {
                             amount={
                                 (item?.matureQuantity
                                     ? item.matureQuantity * item.price
-                                    : 0) +
-                                (item?.mediumQuantity
-                                    ? item.mediumQuantity * item.price
                                     : 0) +
                                 (item?.greenQuantity
                                     ? item.greenQuantity * item.price

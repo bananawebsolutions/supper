@@ -3,7 +3,6 @@
 import {
     addToCartFruitVegetableGreen,
     addToCartFruitVegetableMature,
-    addToCartFruitVegetableMedium,
 } from "@/lib/redux/features/cart/cartSlice";
 import { ProductData } from "@/types";
 import { useState } from "react";
@@ -24,7 +23,6 @@ const MaturitySelect = ({ item }: Props) => {
     };
 
     const matureQuantity = parseFloat(quantity);
-    const mediumQuantity = parseFloat(quantity);
     const greenQuantity = parseFloat(quantity);
 
     const handleAddToCart = () => {
@@ -32,11 +30,6 @@ const MaturitySelect = ({ item }: Props) => {
             case "maduro":
                 dispatch(
                     addToCartFruitVegetableMature({ item, matureQuantity })
-                );
-                break;
-            case "medio":
-                dispatch(
-                    addToCartFruitVegetableMedium({ item, mediumQuantity })
                 );
                 break;
             case "verde":

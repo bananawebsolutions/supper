@@ -86,9 +86,7 @@ export const POST = async (req: NextRequest) => {
             quantity:
                 item?.productType === "other"
                     ? item?.quantity
-                    : (item?.matureQuantity || 0) +
-                      (item?.mediumQuantity || 0) +
-                      (item?.greenQuantity || 0),
+                    : (item?.matureQuantity || 0) + (item?.greenQuantity || 0),
             price_data: {
                 currency: "mxn",
                 unit_amount: Math.round(item?.price * 100),

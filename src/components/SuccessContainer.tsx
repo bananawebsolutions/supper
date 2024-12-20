@@ -40,7 +40,6 @@ const SuccessContainer = ({ id }: { id: string }) => {
             } else {
                 itemTotal =
                     (item.matureQuantity || 0) * item.price +
-                    (item.mediumQuantity || 0) * item.price +
                     (item.greenQuantity || 0) * item.price;
             }
 

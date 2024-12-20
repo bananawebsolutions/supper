@@ -121,12 +121,6 @@ export default defineType({
             hidden: ({ parent }) => parent?.productType === "other",
         }),
         defineField({
-            name: "mediumQuantity",
-            type: "number",
-            title: "Medium Quantity (Kg)",
-            hidden: ({ parent }) => parent?.productType === "other",
-        }),
-        defineField({
             name: "greenQuantity",
             title: "Green Quantity (Kg)",
             type: "number",
