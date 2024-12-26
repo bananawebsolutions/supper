@@ -28,11 +28,7 @@ const categoryFilter = {
 const brandFilter = {
     name: "Marcas",
     options: [
-        { value: "lala", label: "Lala" },
-        { value: "bimbo", label: "Bimbo" },
-        { value: "nescafe", label: "Nescafé" },
-        { value: "la-costena", label: "La Costeña" },
-        { value: "kelloggs", label: "Kellogg's" },
+        { value: "mrlucky", label: "Mr. Lucky" },
         { value: "generico", label: "Genérico" },
         { value: "variado", label: "Variado" },
     ],

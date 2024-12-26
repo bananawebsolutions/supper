@@ -103,12 +103,7 @@ export default defineType({
             options: {
                 list: [
                     { title: "Genérico", value: "generico" },
-                    { title: "Alpura", value: "alpura" },
-                    { title: "Nescafé", value: "nescafe" },
-                    { title: "Kellogg's", value: "kelloggs" },
-                    { title: "Bimbo", value: "bimbo" },
-                    { title: "La Costeña", value: "la-costena" },
-                    { title: "Lala", value: "lala" },
+                    { title: "Mr. Lucky", value: "mrlucky" },
                     { title: "Variado", value: "variado" },
                 ],
             },
