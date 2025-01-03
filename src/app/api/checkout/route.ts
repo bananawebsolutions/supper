@@ -110,6 +110,7 @@ export const POST = async (req: NextRequest) => {
                 pickupLocation,
                 shippingMethod,
                 date: today,
+                schedule: shippingMethod === "domicilio" ? selectedHour : null,
             },
             shipping_address_collection: {
                 allowed_countries: shippingMethod === "domicilio" ? ["MX"] : [],
