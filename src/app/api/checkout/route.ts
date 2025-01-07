@@ -86,23 +86,27 @@ export const POST = async (req: NextRequest) => {
             if (item.productType === "p") {
                 return {
                     quanitity: item.quantity,
-                    price: item.pPrice * item.quantity,
+                    price: item.pPrice * (item.quantity || 0),
                 };
             } else if (item.productType === "m-kg-p") {
                 const totalQuantity =
-                    item.matureQuantity + item.greenQuantity + item.quantity;
+                    (item.matureQuantity || 0) +
+                    (item.greenQuantity || 0) +
+                    (item.quantity || 0);
                 const totalPrice =
-                    item.kgPrice * (item.matureQuantity + item.greenQuantity) +
-                    item.pPrice * item.quantity;
+                    item.kgPrice *
+                        (item.matureQuantity || 0 + item.greenQuantity || 0) +
+                    item.pPrice * (item.quantity || 0);
                 return {
                     quantity: totalQuantity,
                     price: totalPrice,
                 };
             } else if (item.productType === "kg-p") {
-                const totalQuantity = item.quantity + item.kgQuantity;
+                const totalQuantity =
+                    (item.quantity || 0) + (item.kgQuantity || 0);
                 const totalPrice =
-                    item.kgPrice * item.kgQuantity +
-                    item.pPrice * item.quantity;
+                    item.kgPrice * (item.kgQuantity || 0) +
+                    item.pPrice * (item.quantity || 0);
                 return {
                     quantity: totalQuantity,
                     price: totalPrice,
@@ -113,7 +117,8 @@ export const POST = async (req: NextRequest) => {
                     price: item.kgPrice * item.kgQuantity,
                 };
             } else if (item.productType === "m-kg") {
-                const totalQuantity = item.matureQuantity + item.greenQuantity;
+                const totalQuantity =
+                    (item.matureQuantity || 0) + (item.greenQuantity || 0);
                 const totalPrice = item.kgPrice * totalQuantity;
                 return {
                     quantity: totalQuantity,
