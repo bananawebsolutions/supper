@@ -85,7 +85,7 @@ export const POST = async (req: NextRequest) => {
         const quantitySelect = (item: ProductData) => {
             if (item.productType === "p") {
                 return {
-                    quanitity: item.quantity,
+                    quanitity: item.quantity || 0,
                     price: item.pPrice * (item.quantity || 0),
                 };
             } else if (item.productType === "m-kg-p") {
@@ -113,8 +113,8 @@ export const POST = async (req: NextRequest) => {
                 };
             } else if (item.productType === "kg") {
                 return {
-                    quantity: item.kgQuantity,
-                    price: item.kgPrice * item.kgQuantity,
+                    quantity: item.kgQuantity || 0,
+                    price: item.kgPrice * (item.kgQuantity || 0),
                 };
             } else if (item.productType === "m-kg") {
                 const totalQuantity =
