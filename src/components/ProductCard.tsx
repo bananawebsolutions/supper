@@ -45,7 +45,7 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                     {item?.rowprice ? (
                         <>
                             <FormattedPrice
-                                amount={item.price}
+                                amount={item?.kgPrice}
                                 className="text-black/60 line-through"
                             />
                             <FormattedPrice
@@ -55,18 +55,18 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                         </>
                     ) : (
                         <FormattedPrice
-                            amount={item?.price}
+                            amount={item?.kgPrice}
                             className="text-green-900 font-bold"
                         />
                     )}
-                    {item?.productType !== "other" && (
+                    {item?.productType !== "p" && (
                         <span className="text-sm font-medium">
                             <i>/Kg</i>
                         </span>
                     )}
                 </div>
             </div>
-            {item?.productType !== "other" ? (
+            {item?.productType !== "p" ? (
                 <SeeProductButton item={item} />
             ) : (
                 <AddToCartButton item={item} />

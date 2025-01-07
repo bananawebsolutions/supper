@@ -82,20 +82,64 @@ export const POST = async (req: NextRequest) => {
             }
         }
 
-        const extractingItems = await items?.map((item: ProductData) => ({
-            quantity:
-                item?.productType === "other"
-                    ? item?.quantity
-                    : (item?.matureQuantity || 0) + (item?.greenQuantity || 0),
-            price_data: {
-                currency: "mxn",
-                unit_amount: Math.round(item?.price * 100),
-                product_data: {
-                    name: item?.title,
-                    description: item?.description,
+        const quantitySelect = (item: ProductData) => {
+            if (item.productType === "p") {
+                return {
+                    quanitity: item.quantity,
+                    price: item.pPrice * item.quantity,
+                };
+            } else if (item.productType === "m-kg-p") {
+                const totalQuantity =
+                    item.matureQuantity + item.greenQuantity + item.quantity;
+                const totalPrice =
+                    item.kgPrice * (item.matureQuantity + item.greenQuantity) +
+                    item.pPrice * item.quantity;
+                return {
+                    quantity: totalQuantity,
+                    price: totalPrice,
+                };
+            } else if (item.productType === "kg-p") {
+                const totalQuantity = item.quantity + item.kgQuantity;
+                const totalPrice =
+                    item.kgPrice * item.kgQuantity +
+                    item.pPrice * item.quantity;
+                return {
+                    quantity: totalQuantity,
+                    price: totalPrice,
+                };
+            } else if (item.productType === "kg") {
+                return {
+                    quantity: item.kgQuantity,
+                    price: item.kgPrice * item.kgQuantity,
+                };
+            } else if (item.productType === "m-kg") {
+                const totalQuantity = item.matureQuantity + item.greenQuantity;
+                const totalPrice = item.kgPrice * totalQuantity;
+                return {
+                    quantity: totalQuantity,
+                    price: totalPrice,
+                };
+            } else {
+                return { quantity: 0, price: 0 };
+            }
+        };
+
+        const extractingItems = await items?.map((item: ProductData) => {
+            const { quantity, price } = quantitySelect(item);
+            return {
+                quantity: quantity,
+                price_data: {
+                    currency: "mxn",
+                    unit_amount: Math.round(
+                        (price * 100) / (quantity ? quantity : 1)
+                    ),
+                    product_data: {
+                        name: item?.title,
+                        description: item?.description,
+                    },
                 },
-            },
-        }));
+            };
+        });
 
         const origin = req.headers.get("origin");
 

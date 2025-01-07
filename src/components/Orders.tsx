@@ -195,13 +195,13 @@ const Orders = () => {
                                                                             <TableCell className="text-center">
                                                                                 <FormattedPrice
                                                                                     amount={
-                                                                                        product?.price
+                                                                                        product?.pPrice
                                                                                     }
                                                                                 />
                                                                             </TableCell>
                                                                             <TableCell className="text-lg">
                                                                                 {product.productType !==
-                                                                                "other" ? (
+                                                                                "p" ? (
                                                                                     <div className="flex flex-col gap-1">
                                                                                         <span className="text-sm">
                                                                                             Kg
@@ -222,21 +222,21 @@ const Orders = () => {
                                                                             </TableCell>
                                                                             <TableCell className="text-right font-semibold">
                                                                                 {product?.productType !==
-                                                                                "other" ? (
+                                                                                "p" ? (
                                                                                     <FormattedPrice
                                                                                         amount={
                                                                                             (product?.matureQuantity ||
                                                                                                 0) *
-                                                                                                product.price +
+                                                                                                product.kgPrice +
                                                                                             (product?.greenQuantity ||
                                                                                                 0) *
-                                                                                                product.price
+                                                                                                product.kgPrice
                                                                                         }
                                                                                     />
                                                                                 ) : (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.price *
+                                                                                            product?.pPrice *
                                                                                             product?.quantity
                                                                                         }
                                                                                     />

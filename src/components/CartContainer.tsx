@@ -61,18 +61,32 @@ const CartContainer = ({ session }: Props) => {
         const price = cartItems.reduce((acc, item) => {
             let itemTotal = 0;
 
-            if (item?.productType === "other") {
-                itemTotal = item.price * item.quantity;
-            } else {
+            if (item?.productType === "p") {
+                itemTotal = (item.pPrice || 0) * (item.quantity || 0);
+            } else if (item?.productType === "m-kg") {
                 itemTotal =
-                    (item.matureQuantity || 0) * item.price +
-                    (item.greenQuantity || 0) * item.price;
+                    (item.matureQuantity || 0) * (item.kgPrice || 0) +
+                    (item.greenQuantity || 0) * (item.kgPrice || 0);
+            } else if (item?.productType === "kg") {
+                itemTotal = (item.kgQuantity || 0) * (item.kgPrice || 0);
+            } else if (item?.productType === "m-kg-p") {
+                itemTotal =
+                    (item.matureQuantity || 0) * (item.kgPrice || 0) +
+                    (item.greenQuantity || 0) * (item.kgPrice || 0) +
+                    (item.pPrice || 0) * (item.quantity || 0);
+            } else if (item?.productType === "kg-p") {
+                itemTotal =
+                    (item.kgQuantity || 0) * (item.kgPrice || 0) +
+                    (item.pPrice || 0) * (item.quantity || 0);
+            } else {
+                itemTotal = 0;
             }
 
             return acc + itemTotal;
         }, 0);
 
         setTotalAmount(price);
+        console.log(price);
 
         if (price > 350) {
             setShipping(0);
@@ -91,7 +105,6 @@ const CartContainer = ({ session }: Props) => {
                     });
                     setClientHasReserved(data?.clientHasReserved);
                     setReservations(data?.reservations);
-                    // console.log(data);
                 }
             } catch (error) {
                 console.error("Error fetching reservations data", error);
@@ -227,11 +240,6 @@ const CartContainer = ({ session }: Props) => {
                                                 {item.hour}
                                             </button>
                                         ))}
-                                        {/* {reservations?.map((reservation) => (
-                                                <div key={reservation.clientId}>
-                                                {reservation.clientId}
-                                            </div>
-                                        ))} */}
                                     </div>
                                     {session?.user && (
                                         <>

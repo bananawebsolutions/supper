@@ -35,12 +35,12 @@ const SuccessContainer = ({ id }: { id: string }) => {
         const price = cartItems.reduce((acc, item) => {
             let itemTotal = 0;
 
-            if (item?.productType === "other") {
-                itemTotal = item.price * item.quantity;
+            if (item?.productType === "p") {
+                itemTotal = item.pPrice * item.quantity;
             } else {
                 itemTotal =
-                    (item.matureQuantity || 0) * item.price +
-                    (item.greenQuantity || 0) * item.price;
+                    (item.matureQuantity || 0) * item.kgPrice +
+                    (item.greenQuantity || 0) * item.kgPrice;
             }
 
             return acc + itemTotal;

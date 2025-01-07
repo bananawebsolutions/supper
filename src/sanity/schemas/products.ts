@@ -36,19 +36,6 @@ export default defineType({
                 hotspot: true,
             },
         }),
-        // defineField({
-        //     name: "category",
-        //     title: "Category",
-        //     type: "array",
-        //     of: [{ type: "reference", to: [{ type: "category" }] }],
-        //     validation: (rule) => rule.required(),
-        // }),
-        defineField({
-            name: "price",
-            title: "Price",
-            type: "number",
-            validation: (rule) => rule.required(),
-        }),
         defineField({
             name: "productCategory",
             title: "Product Category",
@@ -89,12 +76,26 @@ export default defineType({
             description: "Select the type of product",
             options: {
                 list: [
-                    { title: "Fruit", value: "fruit" },
-                    { title: "Vegetable", value: "vegetable" },
-                    { title: "Other", value: "other" },
+                    { title: "M-Kg", value: "m-kg" },
+                    { title: "M-Kg-P", value: "m-kg-p" },
+                    { title: "Kg-P", value: "kg-p" },
+                    { title: "Kg", value: "kg" },
+                    { title: "P", value: "p" },
                 ],
             },
-            validation: (rule) => rule.required(),
+        }),
+        defineField({
+            name: "kgPrice",
+            title: "Kg Price",
+            type: "number",
+            hidden: ({ parent }) => parent?.productType === "p",
+        }),
+        defineField({
+            name: "pPrice",
+            title: "P Price",
+            type: "number",
+            hidden: ({ parent }) =>
+                parent?.productType === "m-kg" || parent?.productType === "kg",
         }),
         defineField({
             name: "brand",
@@ -107,19 +108,33 @@ export default defineType({
                     { title: "Variado", value: "variado" },
                 ],
             },
-            hidden: ({ parent }) => parent?.productType !== "other",
+            hidden: ({ parent }) => parent?.productType !== "p",
         }),
         defineField({
             name: "matureQuantity",
             type: "number",
             title: "Mature Quantity (Kg)",
-            hidden: ({ parent }) => parent?.productType === "other",
+            hidden: ({ parent }) =>
+                parent?.productType === "p" ||
+                parent?.productType === "kg" ||
+                parent?.productType === "kg-p",
         }),
         defineField({
             name: "greenQuantity",
             title: "Green Quantity (Kg)",
             type: "number",
-            hidden: ({ parent }) => parent?.productType === "other",
+            hidden: ({ parent }) =>
+                parent?.productType === "p" ||
+                parent?.productType === "kg" ||
+                parent?.productType === "kg-p",
+        }),
+        defineField({
+            name: "kgQuantity",
+            title: "Kg Quantity",
+            type: "number",
+            hidden: ({ parent }) =>
+                parent?.productType !== "m-kg" ||
+                parent?.productType !== "m-kg-p",
         }),
         defineField({
             name: "rowprice",
@@ -141,13 +156,16 @@ export default defineType({
             name: "seasonal",
             title: "Seasonal",
             type: "boolean",
-            hidden: ({ parent }) => parent?.productType === "other",
+            hidden: ({ parent }) =>
+                parent?.productType !== "m-kg-p" ||
+                parent?.productType !== "m-kg",
         }),
         defineField({
             name: "quantity",
             title: "Quantity",
             type: "number",
-            hidden: ({ parent }) => parent?.productType !== "other",
+            hidden: ({ parent }) =>
+                parent?.productType === "m-kg" || parent?.productType === "kg",
         }),
     ],
     preview: {

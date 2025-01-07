@@ -52,14 +52,16 @@ interface SelectedAmount {
 
 export interface ProductData {
     title: string;
-    productType: "fruit" | "vegetable" | "other";
+    productType: "m-kg" | "m-kg-p" | "kg-p" | "kg" | "p";
     productCategory: string;
     selectedAmounts: SelectedAmount[];
     image: ImageAsset;
     quantity: number;
     matureQuantity: number;
     greenQuantity: number;
-    price: number;
+    kgPrice: number;
+    pPrice: number;
+    kgQuantity: number;
     slug: Slug;
     _createdAt: string;
     description: string;

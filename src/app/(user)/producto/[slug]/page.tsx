@@ -6,7 +6,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import ProductCard from "@/components/ProductCard";
 import FormattedPrice from "@/components/FormattedPrice";
-import AddToCartButton from "@/components/AddToCartButton";
+// import AddToCartButton from "@/components/AddToCartButton";
 import MaturitySelect from "@/components/MaturitySelect";
 
 interface Props {
@@ -49,14 +49,14 @@ const SingleProductPage = async ({ params }: Props) => {
                                 <>
                                     <p className="text-lg font-normal text-gray-500 line-through">
                                         <FormattedPrice
-                                            amount={product?.price}
+                                            amount={product?.pPrice}
                                         />
                                     </p>
                                     <FormattedPrice
                                         amount={product?.rowprice}
                                         className="text-lg font-bold text-green-900"
                                     />
-                                    {product?.productType !== "other" && (
+                                    {product?.productType !== "p" && (
                                         <span className="text-sm font-medium">
                                             <i>/Kg</i>
                                         </span>
@@ -65,7 +65,7 @@ const SingleProductPage = async ({ params }: Props) => {
                                         Ahorraste en este producto{" "}
                                         <FormattedPrice
                                             amount={
-                                                product?.price -
+                                                product?.kgPrice -
                                                 product?.rowprice
                                             }
                                             className="bg-green-600 text-white px-2 rounded-full text-xs py-1"
@@ -75,10 +75,10 @@ const SingleProductPage = async ({ params }: Props) => {
                             ) : (
                                 <>
                                     <FormattedPrice
-                                        amount={product?.price}
+                                        amount={product?.kgPrice}
                                         className="text-lg font-bold text-green-900"
                                     />
-                                    {product?.productType !== "other" && (
+                                    {product?.productType !== "p" && (
                                         <span className="text-sm font-medium">
                                             <i>/Kg</i>
                                         </span>
@@ -89,15 +89,17 @@ const SingleProductPage = async ({ params }: Props) => {
                         <p className="text-black/60 text-sm tracking-wide">
                             {product?.description}
                         </p>
-                        {product?.productType !== "other" && (
-                            <MaturitySelect item={product} />
-                        )}
-                        {product?.productType !== "other" ? null : (
+                        {product?.productType === "m-kg" ||
+                            (product?.productType === "m-kg-p" && (
+                                <MaturitySelect item={product} />
+                            ))}
+                        {/* {product?.productType === "kg" ||
+                        product?.productType === "m-kg" ? null : (
                             <AddToCartButton
                                 item={product}
                                 className="rounded-full py-3"
                             />
-                        )}
+                        )} */}
                         <p className="font-normal text-sm">
                             <span className="font-base font-medium">
                                 Categoría:{" "}
