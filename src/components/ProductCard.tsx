@@ -55,7 +55,13 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                                 className="text-black/60 line-through"
                             />
                             <FormattedPrice
-                                amount={item?.rowprice}
+                                amount={
+                                    item?.productType === "kg" ||
+                                    item?.productType === "m-kg" ||
+                                    item?.productType === "m-kg-p"
+                                        ? item?.kgPrice * (1 - item?.rowprice)
+                                        : item?.pPrice * (1 - item?.rowprice)
+                                }
                                 className="text-green-900 font-bold"
                             />
                         </>

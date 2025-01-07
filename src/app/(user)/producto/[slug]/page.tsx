@@ -50,13 +50,20 @@ const SingleProductPage = async ({ params }: Props) => {
                                     <p className="text-lg font-normal text-gray-500 line-through">
                                         <FormattedPrice
                                             amount={
-                                                product?.pPrice ||
-                                                product?.kgPrice
+                                                product?.productType !== "p"
+                                                    ? product?.kgPrice
+                                                    : product?.pPrice
                                             }
                                         />
                                     </p>
                                     <FormattedPrice
-                                        amount={product?.rowprice}
+                                        amount={
+                                            product?.productType !== "p"
+                                                ? product?.kgPrice *
+                                                  (1 - product?.rowprice)
+                                                : product?.pPrice *
+                                                  (1 - product?.rowprice)
+                                        }
                                         className="text-lg font-bold text-green-900"
                                     />
                                     {product?.productType !== "p" && (
@@ -66,21 +73,18 @@ const SingleProductPage = async ({ params }: Props) => {
                                     )}
                                     <p>
                                         Ahorraste en este producto{" "}
-                                        <FormattedPrice
-                                            amount={
-                                                product?.kgPrice ||
-                                                product?.pPrice -
-                                                    product?.rowprice
-                                            }
-                                            className="bg-green-600 text-white px-2 rounded-full text-xs py-1"
-                                        />
+                                        <span className="bg-green-600 font-semibold text-sm text-white rounded-full px-3 py-1">
+                                            {product?.rowprice * 100}%
+                                        </span>
                                     </p>
                                 </>
                             ) : (
                                 <>
                                     <FormattedPrice
                                         amount={
-                                            product?.kgPrice || product?.pPrice
+                                            product?.productType !== "p"
+                                                ? product?.kgPrice
+                                                : product?.pPrice
                                         }
                                         className="text-lg font-bold text-green-900"
                                     />

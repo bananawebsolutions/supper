@@ -141,7 +141,7 @@ export default defineType({
             name: "rowprice",
             title: "Row Price",
             type: "number",
-            validation: (rule) => rule.min(1),
+            validation: (rule) => rule.min(0),
         }),
         defineField({
             name: "isnew",
