@@ -27,6 +27,53 @@ const SingleProductPage = async ({ params }: Props) => {
         { slug }
     );
 
+    const addToCartOptions = (item: ProductData) => {
+        switch (item.productType) {
+            case "m-kg":
+                return (
+                    <>
+                        <MaturitySelect item={item} />
+                        <p>Esto es un elemento que obtiene Kg Quantity</p>
+                    </>
+                );
+            case "p":
+                return (
+                    <AddToCartButton
+                        item={item}
+                        className="rounded-full py-3 bg-red-300"
+                    />
+                );
+            case "m-kg-p":
+                return (
+                    <>
+                        <MaturitySelect item={item} />
+                        <AddToCartButton
+                            item={item}
+                            className="rounded-full py-3 bg-red-300"
+                        />
+                    </>
+                );
+            case "kg-p":
+                return (
+                    <>
+                        <p>Esto es un producto que suma kgQuantity</p>
+                        <AddToCartButton
+                            item={item}
+                            className="rounded-full py-3 bg-red-300"
+                        />
+                    </>
+                );
+            case "kg":
+                return (
+                    <>
+                        <p>Esto es un producto que suma kgQuantity</p>
+                    </>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <Container className="my-10">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-4 h-full p-4">
@@ -99,16 +146,7 @@ const SingleProductPage = async ({ params }: Props) => {
                         <p className="text-black/60 text-sm tracking-wide">
                             {product?.description}
                         </p>
-                        {product?.productType === "m-kg" ||
-                            (product?.productType === "m-kg-p" && (
-                                <MaturitySelect item={product} />
-                            ))}
-                        {product?.productType !== "p" ? null : (
-                            <AddToCartButton
-                                item={product}
-                                className="rounded-full py-3"
-                            />
-                        )}
+                        {addToCartOptions(product)}
                         <p className="font-normal text-sm">
                             <span className="font-base font-medium">
                                 Categoría:{" "}
