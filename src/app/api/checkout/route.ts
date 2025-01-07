@@ -103,6 +103,7 @@ export const POST = async (req: NextRequest) => {
             payment_method_types: ["card"],
             line_items: extractingItems,
             mode: "payment",
+            locale: "es",
             success_url: `${origin}/success/?session_id={CHECKOUT_SESSION_ID}&client_id=${clientId}&shipping_method=${shippingMethod}&selected_hour=${selectedHour}`,
             cancel_url: `${origin}/cancel/?cancelled=true`,
             metadata: {
