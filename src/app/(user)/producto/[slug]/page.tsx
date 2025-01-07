@@ -6,7 +6,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import ProductCard from "@/components/ProductCard";
 import FormattedPrice from "@/components/FormattedPrice";
-// import AddToCartButton from "@/components/AddToCartButton";
+import AddToCartButton from "@/components/AddToCartButton";
 import MaturitySelect from "@/components/MaturitySelect";
 
 interface Props {
@@ -49,7 +49,10 @@ const SingleProductPage = async ({ params }: Props) => {
                                 <>
                                     <p className="text-lg font-normal text-gray-500 line-through">
                                         <FormattedPrice
-                                            amount={product?.pPrice}
+                                            amount={
+                                                product?.pPrice ||
+                                                product?.kgPrice
+                                            }
                                         />
                                     </p>
                                     <FormattedPrice
@@ -65,8 +68,9 @@ const SingleProductPage = async ({ params }: Props) => {
                                         Ahorraste en este producto{" "}
                                         <FormattedPrice
                                             amount={
-                                                product?.kgPrice -
-                                                product?.rowprice
+                                                product?.kgPrice ||
+                                                product?.pPrice -
+                                                    product?.rowprice
                                             }
                                             className="bg-green-600 text-white px-2 rounded-full text-xs py-1"
                                         />
@@ -75,7 +79,9 @@ const SingleProductPage = async ({ params }: Props) => {
                             ) : (
                                 <>
                                     <FormattedPrice
-                                        amount={product?.kgPrice}
+                                        amount={
+                                            product?.kgPrice || product?.pPrice
+                                        }
                                         className="text-lg font-bold text-green-900"
                                     />
                                     {product?.productType !== "p" && (
@@ -93,13 +99,12 @@ const SingleProductPage = async ({ params }: Props) => {
                             (product?.productType === "m-kg-p" && (
                                 <MaturitySelect item={product} />
                             ))}
-                        {/* {product?.productType === "kg" ||
-                        product?.productType === "m-kg" ? null : (
+                        {product?.productType !== "p" ? null : (
                             <AddToCartButton
                                 item={product}
                                 className="rounded-full py-3"
                             />
-                        )} */}
+                        )}
                         <p className="font-normal text-sm">
                             <span className="font-base font-medium">
                                 Categoría:{" "}

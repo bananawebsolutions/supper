@@ -133,8 +133,9 @@ export default defineType({
             title: "Kg Quantity",
             type: "number",
             hidden: ({ parent }) =>
-                parent?.productType !== "m-kg" ||
-                parent?.productType !== "m-kg-p",
+                parent?.productType === "m-kg" ||
+                parent?.productType === "m-kg-p" ||
+                parent?.productType === "p",
         }),
         defineField({
             name: "rowprice",
