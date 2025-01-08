@@ -19,7 +19,7 @@ const predefinedHours = [
 ];
 
 export const POST = async (req: NextRequest) => {
-    const allowedZipCodes = ["12345"];
+    const allowedZipCodes = ["52930", "52934", "52936", "52937", "52938"];
     const today = new Date().toLocaleDateString("es-MX").split("T")[0];
 
     if (!process.env.STRIPE_SECRET_KEY) {
