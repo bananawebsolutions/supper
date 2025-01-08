@@ -137,13 +137,20 @@ const CartItem = ({ cart, item }: Props) => {
                             amount={
                                 (item?.matureQuantity
                                     ? item.matureQuantity * item.kgPrice
-                                    : 0) +
+                                    : 0) *
+                                    (1 - item?.rowprice || 1) +
                                 (item?.greenQuantity
                                     ? item.greenQuantity * item.kgPrice
-                                    : 0) +
+                                    : 0) *
+                                    (1 - item?.rowprice || 1) +
                                 (item?.kgQuantity
                                     ? item.kgQuantity * item.kgPrice
-                                    : 0)
+                                    : 0) *
+                                    (1 - item?.rowprice || 1) +
+                                (item?.quantity
+                                    ? item.quantity * item.pPrice
+                                    : 0) *
+                                    (1 - item?.rowprice || 1)
                             }
                         />
                     )}
