@@ -81,7 +81,7 @@ const CartItem = ({ cart, item }: Props) => {
                     />
                 </p>
                 <div className="w-1/3 flex items-center gap-6 text-lg">
-                    {item?.productType === "p" ? (
+                    {item?.productType === "p" && (
                         <>
                             <button
                                 onClick={handleMinus}
@@ -108,7 +108,8 @@ const CartItem = ({ cart, item }: Props) => {
                                 <FaPlus />
                             </button>
                         </>
-                    ) : (
+                    )}
+                    {item?.productType === "m-kg" && (
                         <div className="flex flex-col gap-2">
                             <p className="text-sm font-semibold">
                                 <span>Maduro: </span>
@@ -123,6 +124,45 @@ const CartItem = ({ cart, item }: Props) => {
                                     ? item.greenQuantity
                                     : 0}{" "}
                                 Kg
+                            </p>
+                        </div>
+                    )}
+                    {item?.productType === "kg" && (
+                        <p className="text-sm font-semibold">
+                            {item?.kgQuantity} Kg
+                        </p>
+                    )}
+                    {item?.productType === "kg-p" && (
+                        <div className="flex flex-col gap-2">
+                            <p className="text-sm font-semibold">
+                                <span>Kg: </span>
+                                {item?.kgQuantity ? item.kgQuantity : 0} Kg
+                            </p>
+                            <p className="text-sm font-semibold">
+                                <span>Cantidad: </span>
+                                {item?.quantity ? item.quantity : 0}
+                            </p>
+                        </div>
+                    )}
+                    {item?.productType === "m-kg-p" && (
+                        <div className="flex flex-col gap-2">
+                            <p className="text-sm font-semibold">
+                                <span>Maduro: </span>
+                                {item?.matureQuantity
+                                    ? item.matureQuantity
+                                    : 0}{" "}
+                                Kg
+                            </p>
+                            <p className="text-sm font-semibold">
+                                <span>Verde: </span>
+                                {item?.greenQuantity
+                                    ? item.greenQuantity
+                                    : 0}{" "}
+                                Kg
+                            </p>
+                            <p className="text-sm font-semibold">
+                                <span>Cantidad: </span>
+                                {item?.quantity ? item.quantity : 0}
                             </p>
                         </div>
                     )}

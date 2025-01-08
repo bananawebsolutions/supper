@@ -86,7 +86,10 @@ export const POST = async (req: NextRequest) => {
             if (item.productType === "p") {
                 return {
                     quanitity: item.quantity || 0,
-                    price: item.pPrice * (item.quantity || 0),
+                    price:
+                        item.pPrice *
+                        (item.quantity || 0) *
+                        (1 - item?.rowprice || 1),
                 };
             } else if (item.productType === "m-kg-p") {
                 const totalQuantity =
@@ -94,9 +97,10 @@ export const POST = async (req: NextRequest) => {
                     (item.greenQuantity || 0) +
                     (item.quantity || 0);
                 const totalPrice =
-                    item.kgPrice *
+                    (item.kgPrice *
                         (item.matureQuantity || 0 + item.greenQuantity || 0) +
-                    item.pPrice * (item.quantity || 0);
+                        item.pPrice * (item.quantity || 0)) *
+                    (1 - item?.rowprice || 1);
                 return {
                     quantity: totalQuantity,
                     price: totalPrice,
@@ -105,8 +109,9 @@ export const POST = async (req: NextRequest) => {
                 const totalQuantity =
                     (item.quantity || 0) + (item.kgQuantity || 0);
                 const totalPrice =
-                    item.kgPrice * (item.kgQuantity || 0) +
-                    item.pPrice * (item.quantity || 0);
+                    (item.kgPrice * (item.kgQuantity || 0) +
+                        item.pPrice * (item.quantity || 0)) *
+                    (1 - item?.rowprice || 1);
                 return {
                     quantity: totalQuantity,
                     price: totalPrice,
@@ -114,12 +119,16 @@ export const POST = async (req: NextRequest) => {
             } else if (item.productType === "kg") {
                 return {
                     quantity: item.kgQuantity || 0,
-                    price: item.kgPrice * (item.kgQuantity || 0),
+                    price:
+                        item.kgPrice *
+                        (item.kgQuantity || 0) *
+                        (1 - item?.rowprice || 1),
                 };
             } else if (item.productType === "m-kg") {
                 const totalQuantity =
                     (item.matureQuantity || 0) + (item.greenQuantity || 0);
-                const totalPrice = item.kgPrice * totalQuantity;
+                const totalPrice =
+                    item.kgPrice * totalQuantity * (1 - item?.rowprice || 1);
                 return {
                     quantity: totalQuantity,
                     price: totalPrice,
