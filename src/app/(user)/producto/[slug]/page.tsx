@@ -47,7 +47,7 @@ const SingleProductPage = async ({ params }: Props) => {
                 return (
                     <>
                         <MaturitySelect item={item} />
-                        <p>Selecciona si prefieres por pieza:</p>
+                        <p>Selecciona si prefieres por pieza (Solo Maduro):</p>
                         <AddQtyToCartButton item={item} />
                     </>
                 );
