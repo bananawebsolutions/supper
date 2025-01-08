@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductData, UserInfo } from "../../../../../types";
+import { RootState } from "../../store";
 
 interface InitialState {
     cartItems: ProductData[];
@@ -46,6 +47,23 @@ export const cartSlice = createSlice({
                 state.cartItems.push({
                     ...action.payload.item,
                     greenQuantity: action.payload.greenQuantity,
+                });
+            }
+        },
+        addToCartKgQuantity: (
+            state,
+            action: PayloadAction<{ item: ProductData; kgQuantity: number }>
+        ) => {
+            const existingItem = state.cartItems.find(
+                (item) => item._id === action.payload.item._id
+            );
+
+            if (existingItem) {
+                existingItem.kgQuantity = action.payload.kgQuantity;
+            } else {
+                state.cartItems.push({
+                    ...action.payload.item,
+                    kgQuantity: action.payload.kgQuantity,
                 });
             }
         },
@@ -137,5 +155,11 @@ export const {
     resetCart,
     removeUser,
     addUser,
+    addToCartKgQuantity,
 } = cartSlice.actions;
+
+export const selectItemQuantityById = (state: RootState, itemId: string) =>
+    state.cart.cartItems.find((item: ProductData) => item._id === itemId)
+        ?.quantity || 0;
+
 export default cartSlice.reducer;

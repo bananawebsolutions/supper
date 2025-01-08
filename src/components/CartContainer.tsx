@@ -86,7 +86,6 @@ const CartContainer = ({ session }: Props) => {
         }, 0);
 
         setTotalAmount(price);
-        console.log(price);
 
         if (price > 350) {
             setShipping(0);

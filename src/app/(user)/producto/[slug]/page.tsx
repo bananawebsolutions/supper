@@ -6,8 +6,9 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import ProductCard from "@/components/ProductCard";
 import FormattedPrice from "@/components/FormattedPrice";
-import AddToCartButton from "@/components/AddToCartButton";
 import MaturitySelect from "@/components/MaturitySelect";
+import AddKgToCartButton from "@/components/AddKgToCartButton";
+import AddQtyToCartButton from "@/components/AddQtyToCartButton";
 
 interface Props {
     params: {
@@ -33,40 +34,35 @@ const SingleProductPage = async ({ params }: Props) => {
                 return (
                     <>
                         <MaturitySelect item={item} />
-                        <p>Esto es un elemento que obtiene Kg Quantity</p>
                     </>
                 );
             case "p":
                 return (
-                    <AddToCartButton
-                        item={item}
-                        className="rounded-full py-3 bg-red-300"
-                    />
+                    <>
+                        <p>Selecciona si prefieres por pieza:</p>
+                        <AddQtyToCartButton item={item} />
+                    </>
                 );
             case "m-kg-p":
                 return (
                     <>
                         <MaturitySelect item={item} />
-                        <AddToCartButton
-                            item={item}
-                            className="rounded-full py-3 bg-red-300"
-                        />
+                        <p>Selecciona si prefieres por pieza:</p>
+                        <AddQtyToCartButton item={item} />
                     </>
                 );
             case "kg-p":
                 return (
                     <>
-                        <p>Esto es un producto que suma kgQuantity</p>
-                        <AddToCartButton
-                            item={item}
-                            className="rounded-full py-3 bg-red-300"
-                        />
+                        <AddKgToCartButton item={item} />
+                        <p>Selecciona si prefieres por pieza:</p>
+                        <AddQtyToCartButton item={item} />
                     </>
                 );
             case "kg":
                 return (
                     <>
-                        <p>Esto es un producto que suma kgQuantity</p>
+                        <AddKgToCartButton item={item} />
                     </>
                 );
             default:

@@ -72,7 +72,13 @@ const CartItem = ({ cart, item }: Props) => {
             </div>
             <div className="flex col-span-5 md:col-span-3 items-center justify-between py-4 md:py-0 px-4 lg:px-0">
                 <p className="flex w-1/3 items-center text-lg font-semibold">
-                    <FormattedPrice amount={item?.kgPrice} />
+                    <FormattedPrice
+                        amount={
+                            item?.productType !== "p"
+                                ? item.kgPrice
+                                : item.pPrice
+                        }
+                    />
                 </p>
                 <div className="w-1/3 flex items-center gap-6 text-lg">
                     {item?.productType === "p" ? (
@@ -134,6 +140,9 @@ const CartItem = ({ cart, item }: Props) => {
                                     : 0) +
                                 (item?.greenQuantity
                                     ? item.greenQuantity * item.kgPrice
+                                    : 0) +
+                                (item?.kgQuantity
+                                    ? item.kgQuantity * item.kgPrice
                                     : 0)
                             }
                         />
