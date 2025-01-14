@@ -25,7 +25,20 @@ const MaturitySelect = ({ item }: Props) => {
     const matureQuantity = parseFloat(quantity);
     const greenQuantity = parseFloat(quantity);
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
+        const parsedQuantity = parseFloat(quantity);
+
+        const response = await fetch("/api/maturity-kg-input-validation", {
+            method: "POST",
+            body: JSON.stringify({ quantity: parsedQuantity }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            toast.error(errorData.message);
+            return;
+        }
+
         switch (maturity) {
             case "maduro":
                 dispatch(
