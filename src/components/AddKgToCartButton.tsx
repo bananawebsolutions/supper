@@ -28,6 +28,8 @@ const AddKgToCartButton = ({ item }: Props) => {
             return;
         }
 
+        setKgQuantity("");
+
         dispatch(
             addToCartKgQuantity({ item, kgQuantity: parseFloat(kgQuantity) })
         );

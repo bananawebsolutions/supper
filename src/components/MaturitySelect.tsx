@@ -39,6 +39,8 @@ const MaturitySelect = ({ item }: Props) => {
             return;
         }
 
+        setQuantity("");
+
         switch (maturity) {
             case "maduro":
                 dispatch(
