@@ -28,7 +28,7 @@ const MaturitySelect = ({ item }: Props) => {
     const handleAddToCart = async () => {
         const parsedQuantity = parseFloat(quantity);
 
-        const response = await fetch("/api/maturity-kg-input-validation", {
+        const response = await fetch("/api/kg-input-validation", {
             method: "POST",
             body: JSON.stringify({ quantity: parsedQuantity }),
         });
