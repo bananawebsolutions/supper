@@ -200,25 +200,30 @@ const Orders = () => {
                                                                                 />
                                                                             </TableCell>
                                                                             <TableCell className="text-lg">
-                                                                                {product.productType !==
-                                                                                "p" ? (
-                                                                                    <div className="flex flex-col gap-1">
-                                                                                        <span className="text-sm">
-                                                                                            Kg
-                                                                                            Maduro:{" "}
-                                                                                            {product?.matureQuantity ||
-                                                                                                0}
-                                                                                        </span>
-                                                                                        <span className="text-sm">
-                                                                                            Kg
-                                                                                            Verde:{" "}
-                                                                                            {product?.greenQuantity ||
-                                                                                                0}
-                                                                                        </span>
-                                                                                    </div>
-                                                                                ) : (
-                                                                                    product?.quantity
-                                                                                )}
+                                                                                <div className="flex flex-col gap-1">
+                                                                                    <span className="text-sm">
+                                                                                        Kg
+                                                                                        Maduro:{" "}
+                                                                                        {product?.matureQuantity ||
+                                                                                            0}
+                                                                                    </span>
+                                                                                    <span className="text-sm">
+                                                                                        Kg
+                                                                                        Verde:{" "}
+                                                                                        {product?.greenQuantity ||
+                                                                                            0}
+                                                                                    </span>
+                                                                                    <span className="text-sm">
+                                                                                        Kg:{" "}
+                                                                                        {product?.kgQuantity ||
+                                                                                            0}
+                                                                                    </span>
+                                                                                    <span className="text-sm">
+                                                                                        Unidades:{" "}
+                                                                                        {product?.quantity ||
+                                                                                            0}
+                                                                                    </span>
+                                                                                </div>
                                                                             </TableCell>
                                                                             <TableCell className="text-right font-semibold">
                                                                                 {product?.productType !==

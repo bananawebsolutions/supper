@@ -4,48 +4,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { useDispatch } from "react-redux";
-import {
-    decreaseQuantity,
-    increaseQuantity,
-    removeFromCart,
-} from "@/lib/redux/features/cart/cartSlice";
+import { removeFromCart } from "@/lib/redux/features/cart/cartSlice";
 import toast from "react-hot-toast";
 import FormattedPrice from "./FormattedPrice";
-import { FaMinus, FaPlus } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+import AddQtyToCartButton from "./AddQtyToCartButton";
 
 interface Props {
     cart: ProductData[];
     item: ProductData;
 }
 
-const CartItem = ({ cart, item }: Props) => {
-    const [existingProduct, setExistingProduct] = useState<ProductData | null>(
-        null
-    );
-
+const CartItem = ({ item }: Props) => {
     const dispatch = useDispatch();
-    const [disabled, setDisabled] = useState(false);
-
-    useEffect(() => {
-        const availabeProduct = cart?.find(
-            (product: ProductData) => product?._id === item?._id
-        );
-
-        if (availabeProduct) {
-            setExistingProduct(availabeProduct);
-        }
-    }, [cart, item]);
-
-    const handleMinus = () => {
-        if ((existingProduct?.quantity as number) > 1) {
-            dispatch(decreaseQuantity(item?._id));
-            toast.success("Se ha restado una unidad del producto");
-            setDisabled(false);
-        } else {
-            setDisabled(true);
-        }
-    };
 
     return (
         <div className="w-full grid grid-cols-5 mb-4 border py-2">
@@ -83,7 +53,8 @@ const CartItem = ({ cart, item }: Props) => {
                 <div className="w-1/3 flex items-center gap-6 text-lg">
                     {item?.productType === "p" && (
                         <>
-                            <button
+                            <AddQtyToCartButton item={item} />
+                            {/* <button
                                 onClick={handleMinus}
                                 disabled={disabled}
                                 className={`w-6 h-6 bg-gray-100 text-sm flex items-center justify-center hover:bg-primaryBlue/10 border-[1px] border-gray-300  
@@ -106,7 +77,7 @@ const CartItem = ({ cart, item }: Props) => {
                                 className="w-6 h-6 bg-gray-100 text-sm flex items-center justify-center hover:bg-primaryBlue/10 cursor-pointer border-[1px] border-gray-300 hover:border-primaryRed hoverEffect"
                             >
                                 <FaPlus />
-                            </button>
+                            </button> */}
                         </>
                     )}
                     {item?.productType === "m-kg" && (
