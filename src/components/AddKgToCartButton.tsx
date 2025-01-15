@@ -14,7 +14,20 @@ const AddKgToCartButton = ({ item }: Props) => {
     const dispatch = useDispatch();
     const [kgQuantity, setKgQuantity] = useState<string>("");
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
+        const parsedQuantity = parseFloat(kgQuantity);
+
+        const response = await fetch("/api/kg-input-validation", {
+            method: "POST",
+            body: JSON.stringify({ quantity: parsedQuantity }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            toast.error(errorData.message);
+            return;
+        }
+
         dispatch(
             addToCartKgQuantity({ item, kgQuantity: parseFloat(kgQuantity) })
         );
