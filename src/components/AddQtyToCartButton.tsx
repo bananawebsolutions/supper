@@ -27,7 +27,17 @@ const AddQtyToCartButton = ({ item }: Props) => {
         setDisabled(itemQuantity < -1);
     }, [itemQuantity]);
 
-    const handleAdd = () => {
+    const handleAdd = async () => {
+        const response = await fetch("/api/quantity-validation", {
+            method: "POST",
+            body: JSON.stringify({ quantity: itemQuantity }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            toast.error(errorData.message);
+            return;
+        }
         dispatch(addToCart(item));
         toast.success(`${item?.title.substring(0, 12)} agregada al carrito`);
     };
