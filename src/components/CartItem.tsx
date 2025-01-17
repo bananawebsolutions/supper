@@ -57,7 +57,7 @@ const CartItem = ({ item }: Props) => {
                             {/* <button
                                 onClick={handleMinus}
                                 disabled={disabled}
-                                className={`w-6 h-6 bg-gray-100 text-sm flex items-center justify-center hover:bg-primaryBlue/10 border-[1px] border-gray-300  
+                                className={`w-6 h-6 bg-gray-100 text-sm flex items-center justify-center hover:bg-primaryBlue/10 border-[1px] border-gray-300
                                 ${disabled ? "cursor-not-allowed" : "cursor-pointer hover:border-primaryRed hoverEffect"}
                             `}
                             >
@@ -149,19 +149,19 @@ const CartItem = ({ item }: Props) => {
                                 (item?.matureQuantity
                                     ? item.matureQuantity * item.kgPrice
                                     : 0) *
-                                    (1 - item?.rowprice || 1) +
+                                (1 - item?.rowprice || 1) +
                                 (item?.greenQuantity
                                     ? item.greenQuantity * item.kgPrice
                                     : 0) *
-                                    (1 - item?.rowprice || 1) +
+                                (1 - item?.rowprice || 1) +
                                 (item?.kgQuantity
                                     ? item.kgQuantity * item.kgPrice
                                     : 0) *
-                                    (1 - item?.rowprice || 1) +
+                                (1 - item?.rowprice || 1) +
                                 (item?.quantity
                                     ? item.quantity * item.pPrice
                                     : 0) *
-                                    (1 - item?.rowprice || 1)
+                                (1 - item?.rowprice || 1)
                             }
                         />
                     )}
