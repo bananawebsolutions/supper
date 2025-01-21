@@ -85,7 +85,7 @@ export const POST = async (req: NextRequest) => {
         const quantitySelect = (item: ProductData) => {
             if (item.productType === "p") {
                 return {
-                    quanitity: item.quantity || 0,
+                    quantity: item.quantity || 0,
                     price:
                         item.pPrice *
                         (item.quantity || 0) *

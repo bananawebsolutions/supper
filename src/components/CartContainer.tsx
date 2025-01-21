@@ -65,7 +65,7 @@ const CartContainer = ({ session }: Props) => {
                 itemTotal =
                     (item.pPrice || 0) *
                     (item.quantity || 0) *
-                    (1 - item.rowprice || 0);
+                    (1 - item.rowprice || 1);
             } else if (item?.productType === "m-kg") {
                 itemTotal =
                     ((item.matureQuantity || 0) * (item.kgPrice || 0) +

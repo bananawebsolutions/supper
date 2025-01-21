@@ -4,7 +4,7 @@ import { IoCloseCircle } from "react-icons/io5";
 
 const CancelledPage = () => {
     return (
-        <Container className="py-10">
+        <Container className="py-10 min-h-[70vh]">
             <div className="flex items-center flex-col justify-center gap-5">
                 <IoCloseCircle className="w-36 h-36 text-red-600" />
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
