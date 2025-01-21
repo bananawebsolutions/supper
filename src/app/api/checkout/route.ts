@@ -57,7 +57,7 @@ export const POST = async (req: NextRequest) => {
         ) {
             return NextResponse.json(
                 {
-                    error: "Lo sentimos 😢, el código postal que ha ingresado está fuera de nuestro alcance.",
+                    error: "Lo sentimos 😢, el código postal que ha ingresado está fuera de nuestro alcance. Contacta a servicio a cliente para revisar tu caso particular.",
                 },
                 { status: 400 }
             );

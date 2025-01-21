@@ -161,7 +161,7 @@ const SuccessContainer = ({ id }: { id: string }) => {
                         <p className="text-sm mt-2 text-gray-600">
                             {error
                                 ? "Hubo un error al registrar tu pedido. Por favor contacta a servicio a clientes."
-                                : "Tu pedido se ha registrado correctamente."}
+                                : "Tu pedido se ha registrado correctamente. Si olvidaste agregar algún producto a tu compra, por favor contacta a servicio a clientes."}
                         </p>
                         <div className="mt-8 space-y-6">
                             <p className="text-base text-gray-700">
