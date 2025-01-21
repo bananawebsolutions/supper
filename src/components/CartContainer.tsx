@@ -252,8 +252,8 @@ const CartContainer = ({ session }: Props) => {
                                     {session?.user && (
                                         <>
                                             {clientHasReserved ||
-                                            (Array.isArray(reservations) &&
-                                                reservations.length >= 2) ? (
+                                                (Array.isArray(reservations) &&
+                                                    reservations.length >= 2) ? (
                                                 <p className="text-red-500">
                                                     Horario no disponible
                                                 </p>
@@ -285,7 +285,11 @@ const CartContainer = ({ session }: Props) => {
                             )}
                             {shippingMethod === "pickup" && (
                                 <div className="flex flex-col gap-y-3 mb-4">
-                                    <p>Lugar de recolección:</p>
+                                    <p>Lugar de recolección:
+                                        <span className="text-sm text-gray-500 block">
+                                            Los pedidos se entregan de de 9:00 am a 17:00 pm
+                                        </span>
+                                    </p>
                                     <div className="flex items-center gap-x-3">
                                         <button
                                             onClick={() =>
