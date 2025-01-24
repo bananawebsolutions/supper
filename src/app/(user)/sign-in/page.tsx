@@ -20,7 +20,6 @@ const SignInPage = async () => {
                         Inicia sesión o Regístrate
                     </h2>
                     <form
-                        // @ts-expect-error
                         action={async () => {
                             "use server";
                             await signIn("google", { redirectTo: "/" });

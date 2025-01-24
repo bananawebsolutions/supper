@@ -7,14 +7,14 @@ import SidebarExpanded from "@/components/SidebarExpanded";
 import Pagination from "@/components/Pagination";
 
 interface Props {
-    searchParams: {
+    searchParams: Promise<{
         categoria?: string;
         marca?: string;
         ofertas?: string;
         masVendido?: string;
         search?: string;
         page?: string;
-    };
+    }>;
 }
 
 const ShopPage = async ({ searchParams }: Props) => {

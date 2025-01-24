@@ -11,6 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         Resend({
             from: "no-reply@registrosupper.store",
             sendVerificationRequest: async (params) => {
+                // @ts-expect-error - `sendVerificationRequest` is not part of the type definition
                 await sendVerificationRequest(params);
             },
         }),

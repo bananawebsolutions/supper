@@ -11,13 +11,13 @@ import AddKgToCartButton from "@/components/AddKgToCartButton";
 import AddQtyToCartButton from "@/components/AddQtyToCartButton";
 
 interface Props {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 const SingleProductPage = async ({ params }: Props) => {
-    const { slug } = await Promise.resolve(params);
+    const { slug } = await params;
     const productQuery = groq`*[_type == "product" && slug.current == $slug][0] {
     ...}`;
 

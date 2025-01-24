@@ -13,7 +13,7 @@ const StudioHeader = (props) => {
                 >
                     <IoReturnDownBack className="text-2xl" /> Regresar a Inicio
                 </Link>
-                <Logo className="text-primaryRed hover:text-white" />
+                <Logo />
                 <p className="hidden md:inline-flex text-sm">
                     Admin Studio para SUPPER E-Commerce
                 </p>
