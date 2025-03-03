@@ -24,7 +24,7 @@ const Popup = () => {
         };
         fetchData();
 
-        if (hasRunPopup === "false") {
+        if (!hasRunPopup) {
             new Promise(() => {
                 setTimeout(() => {
                     setIsVisible(true);
