@@ -56,7 +56,7 @@ const SignInMailForm = () => {
                     >
                         {isPending
                             ? "Enviando..."
-                            : "Inicar sesión o Registrarse"}
+                            : "Iniciar sesión o Registrarse"}
                     </button>
                 </div>
             </form>
