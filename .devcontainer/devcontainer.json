@@ -1,0 +1,61 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+	"features": {
+		"ghcr.io/devcontainers-extra/features/prisma:2": {},
+		"ghcr.io/braun-daniel/devcontainer-features/fzf:1": {}
+	},
+	"waitFor": "onCreateCommand",
+    "updateContentCommand": "npm install",
+    "postAttachCommand": "npm run dev",
+    "portsAttributes": {
+        "3000": {
+            "label": "Application",
+            "onAutoForward": "openBrowser"
+        }
+    },
+    "forwardPorts": [3000],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "manojjoshi.aesthetic",
+                "astro-build.astro-vscode",
+                "aaron-bond.better-comments",
+                "naumovs.color-highlight",
+                "mikestead.dotenv",
+                "usernamehw.errorlens",
+                "dsznajder.es7-react-js-snippets",
+                "dbaeumer.vscode-eslint",
+                "waderyan.gitblame",
+                "oderwat.indent-rainbow",
+                "ChirtleLovesDolls.nebula-theme",
+                "christian-kohler.path-intellisense",
+                "esbenp.prettier-vscode",
+                "YoavBls.pretty-ts-errors",
+                "Prisma.prisma",
+                "bradlc.vscode-tailwindcss",
+                "ChakrounAnas.turbo-console-log",
+                "vscodevim.vim",
+                "PKief.material-icon-theme"
+            ]
+        }
+    }
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
