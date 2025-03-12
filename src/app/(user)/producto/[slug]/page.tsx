@@ -39,7 +39,7 @@ const SingleProductPage = async ({ params }: Props) => {
             case "p":
                 return (
                     <>
-                        <p>Selecciona si prefieres por pieza:</p>
+                        <p>Selecciona la cantidad de piezas:</p>
                         <AddQtyToCartButton item={item} />
                     </>
                 );

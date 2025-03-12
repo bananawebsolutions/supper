@@ -113,6 +113,7 @@ export default defineType({
                     { title: "Genérico", value: "generico" },
                     { title: "Mr. Lucky", value: "mrlucky" },
                     { title: "Bimbo", value: "bimbo" },
+                    { title: "Pronto", value: "pronto" },
                     { title: "Variado", value: "variado" },
                     { title: "Natural", value: "natural" },
                 ],
