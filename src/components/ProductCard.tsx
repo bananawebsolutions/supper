@@ -32,7 +32,7 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                     </p>
                 ) : (
                     <p className="uppercase text-xs font-medium text-primaryRed mt-4">
-                        natural
+                        Por definir
                     </p>
                 )}
                 <h2 className="text-base font-semibold text-black line-clamp-1">
@@ -44,44 +44,72 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                 <div className="flex items-center gap-2 mb-5">
                     {item?.rowprice ? (
                         <>
+                            {item?.productType === "kg" ||
+                                (item?.productType === "m-kg" && (
+                                    <FormattedPrice
+                                        amount={item?.kgPrice}
+                                        className="text-black/60 line-through"
+                                    />
+                                ))}
+                            {item?.productType === "p" && (
+                                <FormattedPrice
+                                    className="text-black/60 line-through"
+                                    amount={item?.pPrice}
+                                />
+                            )}
+                            {item?.productType === "100g" && (
+                                <FormattedPrice
+                                    className="text-black/60 line-through"
+                                    amount={item?.gramsPrice}
+                                />
+                            )}
                             <FormattedPrice
                                 amount={
                                     item?.productType === "kg" ||
-                                    item?.productType === "m-kg" ||
-                                    item?.productType === "m-kg-p"
-                                        ? item?.kgPrice
-                                        : item?.pPrice
-                                }
-                                className="text-black/60 line-through"
-                            />
-                            <FormattedPrice
-                                amount={
-                                    item?.productType === "kg" ||
-                                    item?.productType === "m-kg" ||
-                                    item?.productType === "m-kg-p"
+                                    item?.productType === "m-kg"
                                         ? item?.kgPrice * (1 - item?.rowprice)
                                         : item?.pPrice * (1 - item?.rowprice)
                                 }
                                 className="text-green-900 font-bold"
                             />
+                            {item?.productType === "100g" && (
+                                <FormattedPrice
+                                    className="text-green-900 font-bold"
+                                    amount={item?.gramsPrice}
+                                />
+                            )}
                         </>
-                    ) : (
+                    ) : item?.productType === "kg" ||
+                      item?.productType === "m-kg" ? (
                         <FormattedPrice
-                            amount={
-                                item?.productType === "kg" ||
-                                item?.productType === "m-kg" ||
-                                item?.productType === "m-kg-p"
-                                    ? item?.kgPrice
-                                    : item?.pPrice
-                            }
+                            amount={item?.kgPrice}
                             className="text-green-900 font-bold"
                         />
-                    )}
-                    {item?.productType !== "p" && (
+                    ) : item?.productType === "p" ? (
+                        <FormattedPrice
+                            className="text-green-900 font-bold"
+                            amount={item?.pPrice}
+                        />
+                    ) : item?.productType === "100g" ? (
+                        <FormattedPrice
+                            className="text-green-900 font-bold"
+                            amount={item?.gramsPrice}
+                        />
+                    ) : null}
+                    {item?.productType === "kg" ||
+                    item?.productType === "m-kg" ? (
                         <span className="text-sm font-medium">
                             <i>/Kg</i>
                         </span>
-                    )}
+                    ) : item?.productType === "100g" ? (
+                        <span className="text-sm font-medium">
+                            <i>/100 gramos</i>
+                        </span>
+                    ) : item?.productType === "p" ? (
+                        <span className="text-sm font-medium">
+                            <i>/pieza</i>
+                        </span>
+                    ) : null}
                 </div>
             </div>
             {item?.productType !== "p" ? (

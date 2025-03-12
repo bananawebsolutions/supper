@@ -43,20 +43,10 @@ const SingleProductPage = async ({ params }: Props) => {
                         <AddQtyToCartButton item={item} />
                     </>
                 );
-            case "m-kg-p":
-                return (
-                    <>
-                        <MaturitySelect item={item} />
-                        <p>Selecciona si prefieres por pieza (Solo Maduro):</p>
-                        <AddQtyToCartButton item={item} />
-                    </>
-                );
-            case "kg-p":
+            case "100g":
                 return (
                     <>
                         <AddKgToCartButton item={item} />
-                        <p>Selecciona si prefieres por pieza:</p>
-                        <AddQtyToCartButton item={item} />
                     </>
                 );
             case "kg":

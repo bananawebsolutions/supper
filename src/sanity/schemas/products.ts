@@ -77,10 +77,11 @@ export default defineType({
             options: {
                 list: [
                     { title: "M-Kg", value: "m-kg" },
-                    { title: "M-Kg-P", value: "m-kg-p" },
-                    { title: "Kg-P", value: "kg-p" },
+                    // { title: "M-Kg-P", value: "m-kg-p" },
+                    // { title: "Kg-P", value: "kg-p" },
                     { title: "Kg", value: "kg" },
                     { title: "P", value: "p" },
+                    { title: "100Gr", value: "100g" },
                 ],
             },
         }),
@@ -88,14 +89,26 @@ export default defineType({
             name: "kgPrice",
             title: "Kg Price",
             type: "number",
-            hidden: ({ parent }) => parent?.productType === "p",
+            hidden: ({ parent }) =>
+                parent?.productType === "p" || parent?.productType === "100g",
+        }),
+        defineField({
+            name: "100gPrice",
+            title: "100Gr Price",
+            type: "number",
+            hidden: ({ parent }) => parent?.productType !== "100g",
         }),
         defineField({
             name: "pPrice",
             title: "P Price",
             type: "number",
-            hidden: ({ parent }) =>
-                parent?.productType === "m-kg" || parent?.productType === "kg",
+            hidden: ({ parent }) => parent?.productType !== "p",
+        }),
+        defineField({
+            name: "gramsPrice",
+            title: "100Gr Price",
+            type: "number",
+            hidden: ({ parent }) => parent?.productType !== "100g",
         }),
         defineField({
             name: "brand",
@@ -105,37 +118,30 @@ export default defineType({
                 list: [
                     { title: "Genérico", value: "generico" },
                     { title: "Mr. Lucky", value: "mrlucky" },
+                    { title: "Bimbo", value: "bimbo" },
                     { title: "Variado", value: "variado" },
+                    { title: "Natural", value: "natural" },
                 ],
             },
-            hidden: ({ parent }) => parent?.productType !== "p",
         }),
         defineField({
             name: "matureQuantity",
             type: "number",
             title: "Mature Quantity (Kg)",
-            hidden: ({ parent }) =>
-                parent?.productType === "p" ||
-                parent?.productType === "kg" ||
-                parent?.productType === "kg-p",
+            hidden: ({ parent }) => parent?.productType !== "m-kg",
         }),
         defineField({
             name: "greenQuantity",
             title: "Green Quantity (Kg)",
             type: "number",
-            hidden: ({ parent }) =>
-                parent?.productType === "p" ||
-                parent?.productType === "kg" ||
-                parent?.productType === "kg-p",
+            hidden: ({ parent }) => parent?.productType !== "m-kg",
         }),
         defineField({
             name: "kgQuantity",
             title: "Kg Quantity",
             type: "number",
             hidden: ({ parent }) =>
-                parent?.productType === "m-kg" ||
-                parent?.productType === "m-kg-p" ||
-                parent?.productType === "p",
+                parent?.productType === "m-kg" || parent?.productType === "p",
         }),
         defineField({
             name: "rowprice",
@@ -157,16 +163,12 @@ export default defineType({
             name: "seasonal",
             title: "Seasonal",
             type: "boolean",
-            hidden: ({ parent }) =>
-                parent?.productType !== "m-kg-p" ||
-                parent?.productType !== "m-kg",
         }),
         defineField({
             name: "quantity",
             title: "Quantity",
             type: "number",
-            hidden: ({ parent }) =>
-                parent?.productType === "m-kg" || parent?.productType === "kg",
+            hidden: ({ parent }) => parent?.productType !== "p",
         }),
     ],
     preview: {

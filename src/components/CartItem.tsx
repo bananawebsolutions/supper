@@ -98,12 +98,13 @@ const CartItem = ({ item }: Props) => {
                             </p>
                         </div>
                     )}
-                    {item?.productType === "kg" && (
-                        <p className="text-sm font-semibold">
-                            {item?.kgQuantity} Kg
-                        </p>
-                    )}
-                    {item?.productType === "kg-p" && (
+                    {item?.productType === "kg" ||
+                        (item?.productType === "100g" && (
+                            <p className="text-sm font-semibold">
+                                {item?.kgQuantity} Kg
+                            </p>
+                        ))}
+                    {/* {item?.productType === "kg-p" && (
                         <div className="flex flex-col gap-2">
                             <p className="text-sm font-semibold">
                                 <span>Kg: </span>
@@ -114,8 +115,8 @@ const CartItem = ({ item }: Props) => {
                                 {item?.quantity ? item.quantity : 0}
                             </p>
                         </div>
-                    )}
-                    {item?.productType === "m-kg-p" && (
+                    )} */}
+                    {/* {item?.productType === "m-kg-p" && (
                         <div className="flex flex-col gap-2">
                             <p className="text-sm font-semibold">
                                 <span>Maduro: </span>
@@ -136,7 +137,7 @@ const CartItem = ({ item }: Props) => {
                                 {item?.quantity ? item.quantity : 0}
                             </p>
                         </div>
-                    )}
+                    )} */}
                 </div>
                 <div className="w-1/3 flex items-center font-bold text-lg">
                     {item?.productType === "p" ? (
@@ -149,19 +150,22 @@ const CartItem = ({ item }: Props) => {
                                 (item?.matureQuantity
                                     ? item.matureQuantity * item.kgPrice
                                     : 0) *
-                                (1 - item?.rowprice || 1) +
+                                    (1 - item?.rowprice || 1) +
                                 (item?.greenQuantity
                                     ? item.greenQuantity * item.kgPrice
                                     : 0) *
-                                (1 - item?.rowprice || 1) +
+                                    (1 - item?.rowprice || 1) +
                                 (item?.kgQuantity
                                     ? item.kgQuantity * item.kgPrice
                                     : 0) *
-                                (1 - item?.rowprice || 1) +
+                                    (item?.kgQuantity
+                                        ? item.gramsPrice * 10
+                                        : 0) *
+                                    (1 - item?.rowprice || 1) +
                                 (item?.quantity
                                     ? item.quantity * item.pPrice
                                     : 0) *
-                                (1 - item?.rowprice || 1)
+                                    (1 - item?.rowprice || 1)
                             }
                         />
                     )}

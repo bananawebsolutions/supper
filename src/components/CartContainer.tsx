@@ -76,17 +76,22 @@ const CartContainer = ({ session }: Props) => {
                     (item.kgQuantity || 0) *
                     (item.kgPrice || 0) *
                     (1 - item.rowprice || 1);
-            } else if (item?.productType === "m-kg-p") {
+            } else if (item?.productType === "100g") {
                 itemTotal =
-                    ((item.matureQuantity || 0) * (item.kgPrice || 0) +
-                        (item.greenQuantity || 0) * (item.kgPrice || 0) +
-                        (item.pPrice || 0) * (item.quantity || 0)) *
+                    (item.kgQuantity || 0) *
+                    (item.gramsPrice * 10 || 0) *
                     (1 - item.rowprice || 1);
-            } else if (item?.productType === "kg-p") {
-                itemTotal =
-                    ((item.kgQuantity || 0) * (item.kgPrice || 0) +
-                        (item.pPrice || 0) * (item.quantity || 0)) *
-                    (1 - item.rowprice || 1);
+                // } else if (item?.productType === "m-kg-p") {
+                //     itemTotal =
+                //         ((item.matureQuantity || 0) * (item.kgPrice || 0) +
+                //             (item.greenQuantity || 0) * (item.kgPrice || 0) +
+                //             (item.pPrice || 0) * (item.quantity || 0)) *
+                //         (1 - item.rowprice || 1);
+                // } else if (item?.productType === "kg-p") {
+                //     itemTotal =
+                //         ((item.kgQuantity || 0) * (item.kgPrice || 0) +
+                //             (item.pPrice || 0) * (item.quantity || 0)) *
+                //         (1 - item.rowprice || 1);
             } else {
                 itemTotal = 0;
             }
@@ -252,8 +257,8 @@ const CartContainer = ({ session }: Props) => {
                                     {session?.user && (
                                         <>
                                             {clientHasReserved ||
-                                                (Array.isArray(reservations) &&
-                                                    reservations.length >= 2) ? (
+                                            (Array.isArray(reservations) &&
+                                                reservations.length >= 2) ? (
                                                 <p className="text-red-500">
                                                     Horario no disponible
                                                 </p>
@@ -285,9 +290,11 @@ const CartContainer = ({ session }: Props) => {
                             )}
                             {shippingMethod === "pickup" && (
                                 <div className="flex flex-col gap-y-3 mb-4">
-                                    <p>Lugar de recolección:
+                                    <p>
+                                        Lugar de recolección:
                                         <span className="text-sm text-gray-500 block">
-                                            Los pedidos se entregan de de 9:00 am a 17:00 pm
+                                            Los pedidos se entregan de de 9:00
+                                            am a 17:00 pm
                                         </span>
                                     </p>
                                     <div className="flex items-center gap-x-3">

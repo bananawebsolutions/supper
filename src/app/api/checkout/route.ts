@@ -91,30 +91,39 @@ export const POST = async (req: NextRequest) => {
                         (item.quantity || 0) *
                         (1 - item?.rowprice || 1),
                 };
-            } else if (item.productType === "m-kg-p") {
-                const totalQuantity =
-                    (item.matureQuantity || 0) +
-                    (item.greenQuantity || 0) +
-                    (item.quantity || 0);
-                const totalPrice =
-                    (item.kgPrice *
-                        (item.matureQuantity || 0 + item.greenQuantity || 0) +
-                        item.pPrice * (item.quantity || 0)) *
-                    (1 - item?.rowprice || 1);
+                // } else if (item.productType === "m-kg-p") {
+                //     const totalQuantity =
+                //         (item.matureQuantity || 0) +
+                //         (item.greenQuantity || 0) +
+                //         (item.quantity || 0);
+                //     const totalPrice =
+                //         (item.kgPrice *
+                //             (item.matureQuantity || 0 + item.greenQuantity || 0) +
+                //             item.pPrice * (item.quantity || 0)) *
+                //         (1 - item?.rowprice || 1);
+                //     return {
+                //         quantity: totalQuantity,
+                //         price: totalPrice,
+                //     };
+                // } else if (item.productType === "kg-p") {
+                //     const totalQuantity =
+                //         (item.quantity || 0) + (item.kgQuantity || 0);
+                //     const totalPrice =
+                //         (item.kgPrice * (item.kgQuantity || 0) +
+                //             item.pPrice * (item.quantity || 0)) *
+                //         (1 - item?.rowprice || 1);
+                //     return {
+                //         quantity: totalQuantity,
+                //         price: totalPrice,
+                //     };
+            } else if (item.productType === "100g") {
                 return {
-                    quantity: totalQuantity,
-                    price: totalPrice,
-                };
-            } else if (item.productType === "kg-p") {
-                const totalQuantity =
-                    (item.quantity || 0) + (item.kgQuantity || 0);
-                const totalPrice =
-                    (item.kgPrice * (item.kgQuantity || 0) +
-                        item.pPrice * (item.quantity || 0)) *
-                    (1 - item?.rowprice || 1);
-                return {
-                    quantity: totalQuantity,
-                    price: totalPrice,
+                    quantity: item.kgQuantity || 0,
+                    price:
+                        item.gramsPrice *
+                        10 *
+                        (item.kgQuantity || 0) *
+                        (1 - item?.rowprice || 1),
                 };
             } else if (item.productType === "kg") {
                 return {
