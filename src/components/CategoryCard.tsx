@@ -19,7 +19,7 @@ const CategoryCard = ({ categories }: Props) => {
                         <Image
                             src={urlFor(category?.image).url()}
                             alt={category?.title}
-                            objectFit="cover"
+                            objectFit="contain"
                             layout="fill"
                         />
                     </div>

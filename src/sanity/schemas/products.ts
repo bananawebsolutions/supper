@@ -45,22 +45,22 @@ export default defineType({
                 list: [
                     { title: "Frutas y Verduras", value: "frutas-y-verduras" },
                     {
-                        title: "Alimentos procesados y envasados ",
-                        value: "alimentos-procesados-y-envasados",
+                        value: "abarrotes",
+                        title: "Abarrotes",
                     },
                     {
-                        title: "Granos y básicos de cocina ",
-                        value: "granos-y-basicos-de-cocina",
-                    },
-                    { title: "Endulzantes", value: "endulzantes" },
-                    {
-                        title: "Bebidas",
-                        value: "bebidas",
+                        value: "condimentos-y-especias",
+                        title: "Condimentos y Especias",
                     },
                     {
-                        title: "Higiene y limpieza",
-                        value: "higiene-y-limipieza",
+                        value: "frutos-secos-y-varios",
+                        title: "Frutos Secos y Varios",
                     },
+                    {
+                        value: "granos-y-semillas",
+                        title: "Granos y Semillas",
+                    },
+                    { value: "chiles-secos", title: "Chiles Secos" },
                     {
                         title: "Paquetes",
                         value: "paquetes",

@@ -8,19 +8,19 @@ const categoryFilter = {
     options: [
         { value: "frutas-y-verduras", label: "Frutas y Verduras" },
         {
-            value: "alimentos-procesados-y-envasados",
-            label: "Alimentos procesados y envasados",
+            value: "abarrotes",
+            label: "Abarrotes",
         },
         {
-            value: "granos-y-basicos-de-cocina",
-            label: "Granos y básicos de cocina",
+            value: "condimentos-y-especias",
+            label: "Condimentos y Especias",
         },
-        { value: "endulzantes", label: "Endulzantes" },
+        { value: "frutos-secos-y-varios", label: "Frutos Secos y Varios" },
         {
-            value: "bebidas",
-            label: "Bebidas",
+            value: "granos-y-semillas",
+            label: "Granos y Semillas",
         },
-        { value: "higiene-y-limpieza", label: "Higiene y limpieza" },
+        { value: "chiles-secos", label: "Chiles Secos" },
         { value: "paquetes", label: "Paquetes" },
     ],
 };
