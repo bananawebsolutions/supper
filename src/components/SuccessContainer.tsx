@@ -36,11 +36,22 @@ const SuccessContainer = ({ id }: { id: string }) => {
             let itemTotal = 0;
 
             if (item?.productType === "p") {
-                itemTotal = item.pPrice * item.quantity;
-            } else {
                 itemTotal =
-                    (item.matureQuantity || 0) * item.kgPrice +
-                    (item.greenQuantity || 0) * item.kgPrice;
+                    item.pPrice * item.quantity * (1 - item.rowprice || 1);
+            } else if (item?.productType === "m-kg") {
+                itemTotal =
+                    ((item.matureQuantity || 0) * item.kgPrice +
+                        (item.greenQuantity || 0) * item.kgPrice) *
+                    (1 - item.rowprice || 1);
+            } else if (item?.productType === "kg") {
+                itemTotal =
+                    item.kgPrice * item.kgQuantity * (1 - item.rowprice || 1);
+            } else if (item?.productType === "100g") {
+                itemTotal =
+                    item.gramsPrice *
+                    10 *
+                    item.kgQuantity *
+                    (1 - item.rowprice || 1);
             }
 
             return acc + itemTotal;

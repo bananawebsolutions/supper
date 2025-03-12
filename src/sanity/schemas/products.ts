@@ -93,12 +93,6 @@ export default defineType({
                 parent?.productType === "p" || parent?.productType === "100g",
         }),
         defineField({
-            name: "100gPrice",
-            title: "100Gr Price",
-            type: "number",
-            hidden: ({ parent }) => parent?.productType !== "100g",
-        }),
-        defineField({
             name: "pPrice",
             title: "P Price",
             type: "number",
