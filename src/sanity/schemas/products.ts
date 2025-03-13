@@ -115,7 +115,6 @@ export default defineType({
                     { title: "Bimbo", value: "bimbo" },
                     { title: "Pronto", value: "pronto" },
                     { title: "La Fina", value: "la fina" },
-                    { title: "La Fina", value: "la fina" },
                     { title: "Knorr", value: "knorr" },
                     { title: "San Juan", value: "san juan" },
                     { title: "La Moderna", value: "la moderna" },
