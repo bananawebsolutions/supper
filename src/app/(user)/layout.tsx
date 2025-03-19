@@ -48,7 +48,7 @@ export default function RootLayout({
                                 },
                             }}
                         />
-                        <WhatsAppButton phoneNumber="525577772700" />
+                        <WhatsAppButton phoneNumber="525652588800" />
                     </Layout>
                 </SessionProvider>
             </body>
