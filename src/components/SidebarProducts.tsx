@@ -31,6 +31,14 @@ const brandFilter = {
         { value: "mrlucky", label: "Mr. Lucky" },
         { value: "generico", label: "Genérico" },
         { value: "variado", label: "Variado" },
+        { value: "bimbo", label: "Bimbo" },
+        { value: "pronto", label: "Pronto" },
+        { value: "verde valle", label: "Verde Valle" },
+        { value: "la fina", label: "La Fina" },
+        { value: "knorr", label: "Knorr" },
+        { value: "clemente jacques", label: "Clemente Jacques" },
+        { value: "san juan", label: "San Juan" },
+        { value: "la moderna", label: "La Moderna" },
     ],
 };
 
