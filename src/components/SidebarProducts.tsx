@@ -71,8 +71,10 @@ const SidebarProducts = () => {
         const params = new URLSearchParams(searchParams);
         if (newCategory === "") {
             params.delete("categoria");
+            params.delete("page");
             router.replace(`/productos?${params}`);
         } else {
+            params.delete("page");
             params.set("categoria", category);
             router.replace(`/productos?${params.toString()}`);
         }
@@ -86,8 +88,10 @@ const SidebarProducts = () => {
 
         if (newBrand === "") {
             params.delete("marca");
+            params.delete("page");
             router.replace(`/productos?${params}`);
         } else {
+            params.delete("page");
             params.set("marca", brand);
             router.replace(`/productos?${params.toString()}`);
         }
@@ -101,8 +105,10 @@ const SidebarProducts = () => {
 
         if (!newBestSeller) {
             params.delete("masVendido");
+            params.delete("page");
             router.replace(`/productos?${params}`);
         } else {
+            params.delete("page");
             params.set("masVendido", "true");
             router.replace(`/productos?${params.toString()}`);
         }
@@ -116,8 +122,10 @@ const SidebarProducts = () => {
 
         if (!newOffer) {
             params.delete("ofertas");
+            params.delete("page");
             router.replace(`/productos?${params}`);
         } else {
+            params.delete("page");
             params.set("ofertas", "true");
             router.replace(`/productos?${params.toString()}`);
         }

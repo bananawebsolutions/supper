@@ -29,7 +29,6 @@ const Pagination = ({ page, totalProducts, productsPerPage }: Props) => {
                 <span className="text-xs">Anterior</span>
             </button>
             <button
-                // TODO: Check disabled
                 onClick={() => {
                     params.set("page", (page + 1).toString());
                     router.replace(`/productos?${params.toString()}`);
