@@ -81,27 +81,66 @@ const SingleProductPage = async ({ params }: Props) => {
                             {product?.rowprice ? (
                                 <>
                                     <p className="text-lg font-normal text-gray-500 line-through">
+                                        {product?.productType === "kg" ||
+                                            (product?.productType ===
+                                                "m-kg" && (
+                                                <FormattedPrice
+                                                    amount={product.kgPrice}
+                                                />
+                                            ))}
+                                        {product?.productType === "p" && (
+                                            <FormattedPrice
+                                                amount={product.pPrice}
+                                            />
+                                        )}
+                                        {product?.productType === "100g" && (
+                                            <FormattedPrice
+                                                amount={product.gramsPrice}
+                                            />
+                                        )}
+                                    </p>
+                                    {product?.productType === "kg" ||
+                                        (product?.productType === "m-kg" && (
+                                            <FormattedPrice
+                                                amount={
+                                                    product?.kgPrice *
+                                                    (1 - product?.rowprice)
+                                                }
+                                                className="text-lg font-bold text-green-900"
+                                            />
+                                        ))}
+                                    {product.productType === "p" && (
                                         <FormattedPrice
                                             amount={
-                                                product?.productType !== "p"
-                                                    ? product?.kgPrice
-                                                    : product?.pPrice
+                                                product?.pPrice *
+                                                (1 - product?.rowprice)
                                             }
+                                            className="text-lg font-bold text-green-900"
                                         />
-                                    </p>
-                                    <FormattedPrice
-                                        amount={
-                                            product?.productType !== "p"
-                                                ? product?.kgPrice *
-                                                  (1 - product?.rowprice)
-                                                : product?.pPrice *
-                                                  (1 - product?.rowprice)
-                                        }
-                                        className="text-lg font-bold text-green-900"
-                                    />
-                                    {product?.productType !== "p" && (
+                                    )}
+                                    {product.productType === "100g" && (
+                                        <FormattedPrice
+                                            amount={
+                                                product?.gramsPrice *
+                                                (1 - product?.rowprice)
+                                            }
+                                            className="text-lg font-bold text-green-900"
+                                        />
+                                    )}
+                                    {product?.productType === "kg" ||
+                                        (product?.productType === "m-kg" && (
+                                            <span className="text-sm font-medium">
+                                                <i>/Kg</i>
+                                            </span>
+                                        ))}
+                                    {product?.productType === "p" && (
                                         <span className="text-sm font-medium">
-                                            <i>/Kg</i>
+                                            <i>/Pieza</i>
+                                        </span>
+                                    )}
+                                    {product?.productType === "100g" && (
+                                        <span className="text-sm font-medium">
+                                            <i>/100 gramos</i>
                                         </span>
                                     )}
                                     <p>
