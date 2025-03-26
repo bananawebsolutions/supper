@@ -44,13 +44,18 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                 <div className="flex items-center gap-2 mb-5">
                     {item?.rowprice ? (
                         <>
-                            {item?.productType === "kg" ||
-                                (item?.productType === "m-kg" && (
-                                    <FormattedPrice
-                                        amount={item?.kgPrice}
-                                        className="text-black/60 line-through"
-                                    />
-                                ))}
+                            {item?.productType === "kg" && (
+                                <FormattedPrice
+                                    amount={item?.kgPrice}
+                                    className="text-black/60 line-through"
+                                />
+                            )}
+                            {item?.productType === "m-kg" && (
+                                <FormattedPrice
+                                    amount={item?.kgPrice}
+                                    className="text-black/60 line-through"
+                                />
+                            )}
                             {item?.productType === "p" && (
                                 <FormattedPrice
                                     className="text-black/60 line-through"
