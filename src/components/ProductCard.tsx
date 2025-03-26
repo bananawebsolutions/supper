@@ -63,15 +63,22 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                                     amount={item?.gramsPrice}
                                 />
                             )}
-                            {item?.productType === "kg" ||
-                                (item?.productType === "m-kg" && (
-                                    <FormattedPrice
-                                        amount={
-                                            item?.kgPrice * (1 - item?.rowprice)
-                                        }
-                                        className="text-green-900 font-bold"
-                                    />
-                                ))}
+                            {item?.productType === "kg" && (
+                                <FormattedPrice
+                                    amount={
+                                        item?.kgPrice * (1 - item?.rowprice)
+                                    }
+                                    className="text-green-900 font-bold"
+                                />
+                            )}
+                            {item?.productType === "m-kg" && (
+                                <FormattedPrice
+                                    amount={
+                                        item?.kgPrice * (1 - item?.rowprice)
+                                    }
+                                    className="text-green-900 font-bold"
+                                />
+                            )}
                             {item?.productType === "p" && (
                                 <FormattedPrice
                                     className="text-green-900 font-bold"
@@ -87,8 +94,7 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                                 />
                             )}
                         </>
-                    ) : item?.productType === "kg" ||
-                      item?.productType === "m-kg" ? (
+                    ) : item?.productType === "kg" ? (
                         <FormattedPrice
                             amount={item?.kgPrice}
                             className="text-green-900 font-bold"
@@ -103,9 +109,13 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                             className="text-green-900 font-bold"
                             amount={item?.gramsPrice}
                         />
+                    ) : item?.productType === "m-kg" ? (
+                        <FormattedPrice
+                            amount={item?.kgPrice}
+                            className="text-green-900 font-bolc"
+                        />
                     ) : null}
-                    {item?.productType === "kg" ||
-                    item?.productType === "m-kg" ? (
+                    {item?.productType === "kg" ? (
                         <span className="text-sm font-medium">
                             <i>/Kg</i>
                         </span>
@@ -116,6 +126,10 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                     ) : item?.productType === "p" ? (
                         <span className="text-sm font-medium">
                             <i>/pieza</i>
+                        </span>
+                    ) : item?.productType === "m-kg" ? (
+                        <span className="text-sm font-medium">
+                            <i>/Kg</i>
                         </span>
                     ) : null}
                 </div>

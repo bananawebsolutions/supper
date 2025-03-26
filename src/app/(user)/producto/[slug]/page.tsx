@@ -81,13 +81,16 @@ const SingleProductPage = async ({ params }: Props) => {
                             {product?.rowprice ? (
                                 <>
                                     <p className="text-lg font-normal text-gray-500 line-through">
-                                        {product?.productType === "kg" ||
-                                            (product?.productType ===
-                                                "m-kg" && (
-                                                <FormattedPrice
-                                                    amount={product.kgPrice}
-                                                />
-                                            ))}
+                                        {product?.productType === "kg" && (
+                                            <FormattedPrice
+                                                amount={product.kgPrice}
+                                            />
+                                        )}
+                                        {product?.productType === "m-kg" && (
+                                            <FormattedPrice
+                                                amount={product.kgPrice}
+                                            />
+                                        )}
                                         {product?.productType === "p" && (
                                             <FormattedPrice
                                                 amount={product.pPrice}
@@ -99,16 +102,24 @@ const SingleProductPage = async ({ params }: Props) => {
                                             />
                                         )}
                                     </p>
-                                    {product?.productType === "kg" ||
-                                        (product?.productType === "m-kg" && (
-                                            <FormattedPrice
-                                                amount={
-                                                    product?.kgPrice *
-                                                    (1 - product?.rowprice)
-                                                }
-                                                className="text-lg font-bold text-green-900"
-                                            />
-                                        ))}
+                                    {product?.productType === "kg" && (
+                                        <FormattedPrice
+                                            amount={
+                                                product?.kgPrice *
+                                                (1 - product?.rowprice)
+                                            }
+                                            className="text-lg font-bold text-green-900"
+                                        />
+                                    )}
+                                    {product?.productType === "m-kg" && (
+                                        <FormattedPrice
+                                            amount={
+                                                product?.kgPrice *
+                                                (1 - product?.rowprice)
+                                            }
+                                            className="text-lg font-bold text-green-900"
+                                        />
+                                    )}
                                     {product.productType === "p" && (
                                         <FormattedPrice
                                             amount={
@@ -127,12 +138,16 @@ const SingleProductPage = async ({ params }: Props) => {
                                             className="text-lg font-bold text-green-900"
                                         />
                                     )}
-                                    {product?.productType === "kg" ||
-                                        (product?.productType === "m-kg" && (
-                                            <span className="text-sm font-medium">
-                                                <i>/Kg</i>
-                                            </span>
-                                        ))}
+                                    {product?.productType === "kg" && (
+                                        <span className="text-sm font-medium">
+                                            <i>/Kg</i>
+                                        </span>
+                                    )}
+                                    {product?.productType === "m-kg" && (
+                                        <span className="text-sm font-medium">
+                                            <i>/Kg</i>
+                                        </span>
+                                    )}
                                     {product?.productType === "p" && (
                                         <span className="text-sm font-medium">
                                             <i>/Pieza</i>
@@ -158,25 +173,34 @@ const SingleProductPage = async ({ params }: Props) => {
                                             className="text-lg font-bold text-green-900"
                                         />
                                     )}
-                                    {product?.productType === "kg" ||
-                                        (product?.productType === "m-kg" && (
-                                            <FormattedPrice
-                                                amount={product?.kgPrice}
-                                                className="text-lg font-bold text-green-900"
-                                            />
-                                        ))}
+                                    {product?.productType === "kg" && (
+                                        <FormattedPrice
+                                            amount={product?.kgPrice}
+                                            className="text-lg font-bold text-green-900"
+                                        />
+                                    )}
+                                    {product?.productType === "m-kg" && (
+                                        <FormattedPrice
+                                            amount={product?.kgPrice}
+                                            className="text-lg font-bold text-green-900"
+                                        />
+                                    )}
                                     {product?.productType === "100g" && (
                                         <FormattedPrice
                                             amount={product?.gramsPrice}
                                             className="text-lg font-bold text-green-900"
                                         />
                                     )}
-                                    {product?.productType === "kg" ||
-                                        (product?.productType === "m-kg" && (
-                                            <span className="text-sm font-medium">
-                                                <i>/Kg</i>
-                                            </span>
-                                        ))}
+                                    {product?.productType === "kg" && (
+                                        <span className="text-sm font-medium">
+                                            <i>/Kg</i>
+                                        </span>
+                                    )}
+                                    {product?.productType === "m-kg" && (
+                                        <span className="text-sm font-medium">
+                                            <i>/Kg</i>
+                                        </span>
+                                    )}
                                     {product?.productType === "p" && (
                                         <span className="text-sm font-medium">
                                             <i>/Pieza</i>
