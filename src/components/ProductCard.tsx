@@ -63,19 +63,27 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                                     amount={item?.gramsPrice}
                                 />
                             )}
-                            <FormattedPrice
-                                amount={
-                                    item?.productType === "kg" ||
-                                    item?.productType === "m-kg"
-                                        ? item?.kgPrice * (1 - item?.rowprice)
-                                        : item?.pPrice * (1 - item?.rowprice)
-                                }
-                                className="text-green-900 font-bold"
-                            />
+                            {item?.productType === "kg" ||
+                                (item?.productType === "m-kg" && (
+                                    <FormattedPrice
+                                        amount={
+                                            item?.kgPrice * (1 - item?.rowprice)
+                                        }
+                                        className="text-green-900 font-bold"
+                                    />
+                                ))}
+                            {item?.productType === "p" && (
+                                <FormattedPrice
+                                    className="text-green-900 font-bold"
+                                    amount={item?.pPrice * (1 - item?.rowprice)}
+                                />
+                            )}
                             {item?.productType === "100g" && (
                                 <FormattedPrice
                                     className="text-green-900 font-bold"
-                                    amount={item?.gramsPrice}
+                                    amount={
+                                        item?.gramsPrice * (1 - item?.rowprice)
+                                    }
                                 />
                             )}
                         </>
