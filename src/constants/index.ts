@@ -28,7 +28,7 @@ export const footerData = [
                 listData: [
                     {
                         name: "Aviso de Privacidad",
-                        link: "/aviso-de-privacidad",
+                        link: "/aviso-privacidad",
                     },
                     {
                         name: "Términos y Condiciones",
