@@ -22,7 +22,7 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                     width={500}
                     height={500}
                     loading="lazy"
-                    className="w-full h-72 object-contain p-2 group-hover:scale-105 hoverEffect"
+                    className="w-full h-48 object-contain p-2 group-hover:scale-105 hoverEffect"
                 />
             </Link>
             <div className="px-6 flex flex-col items-center gap-2">

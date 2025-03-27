@@ -14,16 +14,17 @@ const AvisoPrivacidadPage = () => {
             </h2>
             <p>
                 Es posible recabar sus datos personales cuando:
-                <ul></ul>
-                <li>
-                    Usted nos los proporciona directamente, como cuando
-                    participa en nuestras promociones o nos da información con
-                    objeto de que le prestemos un servicio{" "}
-                </li>
-                <li>
-                    Visita nuestro sitio de Internet o utiliza nuestros
-                    servicios en línea
-                </li>
+                <ul>
+                    <li>
+                        Usted nos los proporciona directamente, como cuando
+                        participa en nuestras promociones o nos da información
+                        con objeto de que le prestemos un servicio{" "}
+                    </li>
+                    <li>
+                        Visita nuestro sitio de Internet o utiliza nuestros
+                        servicios en línea
+                    </li>
+                </ul>
             </p>
             <h2 className="font-bold text-2xl">2. Uso de la información</h2>
             <p>

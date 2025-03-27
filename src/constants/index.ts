@@ -34,6 +34,10 @@ export const footerData = [
                         name: "Términos y Condiciones",
                         link: "/terminos-y-condiciones",
                     },
+                    {
+                        name: "Contacto",
+                        link: "https://wa.me/525652588800",
+                    },
                 ],
             },
         ],
