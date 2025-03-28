@@ -15,8 +15,8 @@ const TerminosYCondicionesPage = () => {
                 términos y condiciones que rigen el uso de este sitio (en lo
                 sucesivo, “Términos y Condiciones”), ya que al Ingresar y
                 utilizar este sitio de internet, cuyo nombre de dominio es
-                https://www.supper.com.mx/ (en lo sucesivo, “Sitio”), propiedad
-                de , CORPORATIVO ADK SISTEMAS Y SERVICIOS S.A. de C.V. (en lo
+                https://supper.com.mx/ (en lo sucesivo, “Sitio”), propiedad de ,
+                CORPORATIVO ADK SISTEMAS Y SERVICIOS S.A. de C.V. (en lo
                 sucesivo, “Supper”) y usted (en lo sucesivo, “Cliente”) está
                 aceptando expresamente los Términos y Condiciones.
             </p>
