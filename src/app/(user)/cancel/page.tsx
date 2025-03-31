@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "../../../components/Container";
 import Link from "next/link";
 import { IoCloseCircle } from "react-icons/io5";
 
