@@ -1,5 +1,5 @@
 import { urlFor } from "@/sanity/lib/image";
-import { Category } from "@/types";
+import { Category } from "../../types";
 import Image from "next/image";
 import Link from "next/link";
 

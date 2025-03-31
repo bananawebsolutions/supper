@@ -1,6 +1,6 @@
 "use client";
 
-import { StoreState } from "@/types";
+import { StoreState } from "../../types";
 import { useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";

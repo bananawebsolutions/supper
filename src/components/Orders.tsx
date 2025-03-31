@@ -4,8 +4,8 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { collection, query } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "@/firebase";
-import { ProductData } from "@/types";
+import { db } from "../../firebase";
+import { ProductData } from "../../types";
 import {
     Badge,
     Card,

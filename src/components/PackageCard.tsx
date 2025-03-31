@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import FormattedPrice from "./FormattedPrice";
-import { Package, ProductData } from "@/types";
+import { Package, ProductData } from "../../types";
 import { urlFor } from "@/sanity/lib/image";
 import { getProductData } from "@/server/actions/get-product-data";
 import { useDispatch } from "react-redux";

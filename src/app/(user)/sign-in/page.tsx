@@ -1,4 +1,4 @@
-import { signIn, auth as nextAuth } from "@/auth";
+import { signIn, auth as nextAuth } from "../../../../auth";
 import Container from "@/components/Container";
 import googleImage from "../../assets/googleImage.png";
 import Image from "next/image";

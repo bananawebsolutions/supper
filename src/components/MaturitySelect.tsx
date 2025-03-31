@@ -4,7 +4,7 @@ import {
     addToCartFruitVegetableGreen,
     addToCartFruitVegetableMature,
 } from "@/lib/redux/features/cart/cartSlice";
-import { ProductData } from "@/types";
+import { ProductData } from "../../types";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";

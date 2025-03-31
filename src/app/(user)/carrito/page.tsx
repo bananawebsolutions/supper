@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "../../../../auth";
 import CartContainer from "@/components/CartContainer";
 import Container from "@/components/Container";
 

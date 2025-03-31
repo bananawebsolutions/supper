@@ -1,6 +1,6 @@
 "use server";
 import { z } from "zod";
-import { signIn } from "@/auth";
+import { signIn } from "../../../auth";
 
 type DEFAULT_STATE = {
     success: string;

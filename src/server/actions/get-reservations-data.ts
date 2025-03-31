@@ -1,6 +1,6 @@
 "use server";
 
-import { adminDB } from "@/firebaseAdmin";
+import { adminDB } from "../../../firebaseAdmin";
 
 interface Reservation {
     clientId: string;
