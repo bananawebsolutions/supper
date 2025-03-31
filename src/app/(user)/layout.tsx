@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Layout from "@/components/Layout";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Layout from "../../components/Layout";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
-import WhatsAppButton from "@/components/WhatsappButton";
+import WhatsAppButton from "../../components/WhatsappButton";
 
 const geistSans = localFont({
     src: "../fonts/GeistVF.woff",

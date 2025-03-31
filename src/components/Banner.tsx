@@ -1,6 +1,6 @@
-import { getBannersData } from "@/lib/getData";
+import { getBannersData } from "../lib/getData";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor } from "../sanity/lib/image";
 import FormattedPrice from "./FormattedPrice";
 import { BannerData } from "../../types";
 import Link from "next/link";

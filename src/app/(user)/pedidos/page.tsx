@@ -1,5 +1,5 @@
-import Container from "@/components/Container";
-import Orders from "@/components/Orders";
+import Container from "../../../components/Container";
+import Orders from "../../../components/Orders";
 
 const OrdersPage = () => {
     return (

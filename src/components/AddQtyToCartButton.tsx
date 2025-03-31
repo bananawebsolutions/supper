@@ -4,12 +4,12 @@ import {
     addToCart,
     decreaseQuantity,
     selectItemQuantityById,
-} from "@/lib/redux/features/cart/cartSlice";
+} from "../lib/redux/features/cart/cartSlice";
 import toast from "react-hot-toast";
 import { ProductData } from "../../types";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import { RootState } from "@/lib/redux/store";
+import { RootState } from "../lib/redux/store";
 
 interface Props {
     item: ProductData;

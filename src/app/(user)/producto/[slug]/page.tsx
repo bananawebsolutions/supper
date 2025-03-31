@@ -1,14 +1,15 @@
-import Container from "@/components/Container";
 import { groq } from "next-sanity";
 import { ProductData } from "../../../../../types";
-import { client } from "@/sanity/lib/client";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import ProductCard from "@/components/ProductCard";
-import FormattedPrice from "@/components/FormattedPrice";
-import MaturitySelect from "@/components/MaturitySelect";
-import AddKgToCartButton from "@/components/AddKgToCartButton";
-import AddQtyToCartButton from "@/components/AddQtyToCartButton";
+
+import Container from "../../../../components/Container";
+import { client } from "../../../../sanity/lib/client";
+import { urlFor } from "../../../../sanity/lib/image";
+import ProductCard from "../../../../components/ProductCard";
+import FormattedPrice from "../../../../components/FormattedPrice";
+import MaturitySelect from "../../../../components/MaturitySelect";
+import AddKgToCartButton from "../../../../components/AddKgToCartButton";
+import AddQtyToCartButton from "../../../../components/AddQtyToCartButton";
 
 interface Props {
     params: Promise<{

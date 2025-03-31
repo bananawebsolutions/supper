@@ -1,4 +1,4 @@
-import SuccessContainer from "@/components/SuccessContainer";
+import SuccessContainer from "../../../components/SuccessContainer";
 import { redirect } from "next/navigation";
 
 interface Props {

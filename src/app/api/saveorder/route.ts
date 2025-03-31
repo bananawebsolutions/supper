@@ -1,4 +1,4 @@
-import { adminDB } from "@/firebaseAdmin";
+import { adminDB } from "../../../../firebaseAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {

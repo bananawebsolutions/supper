@@ -1,10 +1,10 @@
-import Container from "@/components/Container";
 import { ProductData } from "../../../../../types";
-import ProductList from "@/components/ProductList";
-import { client } from "@/sanity/lib/client";
+import { client } from "../../../../sanity/lib/client";
 import { groq } from "next-sanity";
-import SidebarExpanded from "@/components/SidebarExpanded";
-import Pagination from "@/components/Pagination";
+import Pagination from "../../../../components/Pagination";
+import Container from "../../../../components/Container";
+import ProductList from "../../../../components/ProductList";
+import SidebarExpanded from "../../../../components/SidebarExpanded";
 
 interface Props {
     searchParams: Promise<{

@@ -1,7 +1,7 @@
 "use client";
 import { twMerge } from "tailwind-merge";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/lib/redux/features/cart/cartSlice";
+import { addToCart } from "../lib/redux/features/cart/cartSlice";
 import toast from "react-hot-toast";
 import { ProductData } from "../../types";
 

@@ -1,4 +1,4 @@
-import { ProductData } from "@/types";
+import { ProductData } from "../../../../types";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 

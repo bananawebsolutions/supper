@@ -1,7 +1,7 @@
-import Container from "@/components/Container";
-import PackageCard from "@/components/PackageCard";
-import { getPackagesData } from "@/lib/getData";
-import { Package } from "@/types";
+import Container from "../../../components/Container";
+import PackageCard from "../../../components/PackageCard";
+import { getPackagesData } from "../../../lib/getData";
+import { Package } from "../../../../types";
 
 const PackagesPage = async () => {
     const packages: Package[] = await getPackagesData();
