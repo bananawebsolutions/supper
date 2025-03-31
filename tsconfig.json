@@ -27,7 +27,8 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "src/app/hooks/useStripe.js"
+        "src/app/hooks/useStripe.js",
+        "tailwind.config.ts"
     ],
     "exclude": ["node_modules"]
 }
