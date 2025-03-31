@@ -1,6 +1,6 @@
 import { auth } from "../../../../auth";
-import Container from "@/components/Container";
-import LogOutButton from "@/components/SignOutButton";
+import Container from "../../../components/Container";
+import LogOutButton from "../../../components/SignOutButton";
 import { redirect } from "next/navigation";
 
 const ProfilePage = async () => {

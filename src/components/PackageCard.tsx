@@ -5,11 +5,11 @@ import Image from "next/image";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import FormattedPrice from "./FormattedPrice";
 import { Package, ProductData } from "../../types";
-import { urlFor } from "@/sanity/lib/image";
-import { getProductData } from "@/server/actions/get-product-data";
+import { urlFor } from "../sanity/lib/image";
 import { useDispatch } from "react-redux";
+import { getProductData } from "../server/actions/get-product-data";
 import toast from "react-hot-toast";
-import { addToCart } from "@/lib/redux/features/cart/cartSlice";
+import { addToCart } from "../lib/redux/features/cart/cartSlice";
 
 interface Props {
     packages: Package[];

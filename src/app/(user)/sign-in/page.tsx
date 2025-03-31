@@ -1,9 +1,9 @@
 import { signIn, auth as nextAuth } from "../../../../auth";
-import Container from "@/components/Container";
+import Container from "../../../components/Container";
 import googleImage from "../../assets/googleImage.png";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import SignInMailForm from "@/components/SignInMailForm";
+import SignInMailForm from "../../../components/SignInMailForm";
 
 const SignInPage = async () => {
     const session = await nextAuth();

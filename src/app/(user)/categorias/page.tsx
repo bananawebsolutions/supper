@@ -1,6 +1,6 @@
-import CategoryCard from "@/components/CategoryCard";
-import Container from "@/components/Container";
-import { getCategoriesData } from "@/lib/getData";
+import CategoryCard from "../../../components/CategoryCard";
+import Container from "../../../components/Container";
+import { getCategoriesData } from "../../../lib/getData";
 import { Category } from "../../../../types";
 
 const CategoriesPage = async () => {

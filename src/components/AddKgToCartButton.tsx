@@ -1,6 +1,6 @@
 "use client";
 
-import { addToCartKgQuantity } from "@/lib/redux/features/cart/cartSlice";
+import { addToCartKgQuantity } from "../lib/redux/features/cart/cartSlice";
 import { ProductData } from "../../types";
 import { useState } from "react";
 import toast from "react-hot-toast";

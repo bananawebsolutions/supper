@@ -4,7 +4,7 @@ import { StoreState } from "../../types";
 import { useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { resetCart } from "@/lib/redux/features/cart/cartSlice";
+import { resetCart } from "../lib/redux/features/cart/cartSlice";
 import Loader from "./Loader";
 import {
     HiCheckCircle,

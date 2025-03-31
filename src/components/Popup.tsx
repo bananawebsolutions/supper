@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { IoCloseCircle } from "react-icons/io5";
 import Image from "next/image";
 import LogoImage from "../app/assets/logo-supper-transparente.png";
-import { getBannersData } from "@/lib/getData";
-import { urlFor } from "@/sanity/lib/image";
+import { getBannersData } from "../lib/getData";
+import { urlFor } from "../sanity/lib/image";
 import { BannerData } from "../../types";
 import { motion } from "framer-motion";
 

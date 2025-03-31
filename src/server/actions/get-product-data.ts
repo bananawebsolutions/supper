@@ -1,6 +1,6 @@
 "use server";
 
-import { client } from "@/sanity/lib/client";
+import { client } from "../../sanity/lib/client";
 import { ProductData } from "../../../types";
 import { groq } from "next-sanity";
 import { Slug } from "sanity";
