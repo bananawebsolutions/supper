@@ -1,6 +1,6 @@
-import { auth } from "../../../../auth";
-import CartContainer from "../../../components/CartContainer";
-import Container from "../../../components/Container";
+import { auth } from "@/auth";
+import CartContainer from "@/components/CartContainer";
+import Container from "@/components/Container";
 
 const CartPage = async () => {
     const session = await auth();
