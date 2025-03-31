@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HiMenuAlt2 } from "react-icons/hi";
-import { navBarList } from "@/constants";
+import { navBarList } from "../constants";
 import Link from "next/link";
 import { MdAccountCircle } from "react-icons/md";
 import SearchInput from "./SearchInput";

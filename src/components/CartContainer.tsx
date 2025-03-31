@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../../types";
 import CartItem from "./CartItem";
-import { resetCart } from "@/lib/redux/features/cart/cartSlice";
+import { resetCart } from "../lib/redux/features/cart/cartSlice";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import FormattedPrice from "./FormattedPrice";
 import Button from "./Button";
 import { Session } from "next-auth";
 import { useEffect, useState } from "react";
-import { getReservationsData } from "@/server/actions/get-reservations-data";
+import { getReservationsData } from "../server/actions/get-reservations-data";
 
 interface Props {
     session?: Session;

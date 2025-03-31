@@ -1,4 +1,4 @@
-import { getBestSellersData } from "@/lib/getData";
+import { getBestSellersData } from "../lib/getData";
 import { ProductData } from "../../types";
 import ProductCard from "./ProductCard";
 import Link from "next/link";

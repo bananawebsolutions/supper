@@ -1,6 +1,6 @@
 "use client";
 
-import { navBarList } from "@/constants";
+import { navBarList } from "../constants";
 import Container from "./Container";
 import Logo from "./Logo";
 import SearchInput from "./SearchInput";

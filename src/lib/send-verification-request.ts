@@ -1,4 +1,4 @@
-import { EmailTemplate } from "@/components/EmailTemplate";
+import { EmailTemplate } from "../components/EmailTemplate";
 import getResend from "./getResend";
 
 interface VerificationRequestParams {

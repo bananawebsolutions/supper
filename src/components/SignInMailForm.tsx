@@ -1,6 +1,6 @@
 "use client";
 
-import { sendLink } from "@/server/actions/resend-login-action";
+import { sendLink } from "../server/actions/resend-login-action";
 import React, { useActionState, useTransition } from "react";
 
 const DEFAULT_STATE_ACTION = {

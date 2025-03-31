@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ProductData } from "../../types";
 import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
+import { urlFor } from "../sanity/lib/image";
 import FormattedPrice from "./FormattedPrice";
 import AddToCartButton from "./AddToCartButton";
 import SeeProductButton from "./SeeProductButton";

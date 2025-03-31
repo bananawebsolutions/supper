@@ -1,4 +1,4 @@
-import { getOffersData } from "@/lib/getData";
+import { getOffersData } from "../lib/getData";
 import { ProductData } from "../../types";
 import ProductCard from "./ProductCard";
 import Link from "next/link";

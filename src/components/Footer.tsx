@@ -1,4 +1,4 @@
-import { footerData } from "@/constants";
+import { footerData } from "../constants";
 import Container from "./Container";
 import Link from "next/link";
 import Logo from "./Logo";

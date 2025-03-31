@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BannerData } from "@/types";
-import { getBannersData } from "@/lib/getData";
-import { urlFor } from "@/sanity/lib/image";
+import { BannerData } from "../../types";
+import { getBannersData } from "../lib/getData";
+import { urlFor } from "../sanity/lib/image";
 
 const EndBanner = async () => {
     const banners: BannerData[] = await getBannersData();
