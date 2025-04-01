@@ -24,7 +24,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
             </Heading>
             <Section className="my-[32px] text-center">
                 <Button
-                    className="text-md rounded-full bg-primaryRed px-5 py-3 text-center font-semibold text-white no-underline"
+                    className="text-md rounded-full bg-green-500 px-5 py-3 text-center font-semibold no-underline"
                     href={magicLink}
                 >
                     Click aquí para iniciar sesión
