@@ -17,16 +17,14 @@
             {
                 "name": "next"
             }
-        ],
-        "paths": {}
+        ]
     },
     "include": [
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "src/app/hooks/useStripe.js",
-        "tailwind.config.ts"
+        "src/app/hooks/useStripe.js"
     ],
     "exclude": ["node_modules"]
 }

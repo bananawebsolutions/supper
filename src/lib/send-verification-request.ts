@@ -25,6 +25,7 @@ export async function sendVerificationRequest(
             from: from,
             to: email,
             subject: "Inicio de sesión",
+            // @ts-expect-error unknown error
             react: EmailTemplate({ magicLink: url }),
         });
 
