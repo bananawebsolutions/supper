@@ -157,7 +157,7 @@ const SidebarProducts = () => {
     }, [searchParams]);
 
     return (
-        <aside className="w-80 bg-white py-10 px-6 min-h-screen h-full overflow-y-auto shadow-xl lg:shadow-none border-t-0 lg:border-r-[1px] order-gray-300/50">
+        <aside className="w-80 bg-white py-10 px-6 min-h-screen h-full overflow-y-auto shadow-xl lg:shadow-none border-t-0 lg:border-r-[1px] border-gray-300/50">
             <h2 className="text-2xl font-bold mb-6 text-gray-800">Filtros</h2>
 
             {/* Categorias */}
