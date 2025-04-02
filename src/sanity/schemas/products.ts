@@ -65,6 +65,10 @@ export default defineType({
                         title: "Paquetes",
                         value: "paquetes",
                     },
+                    {
+                        title: "Huevo",
+                        value: "huevo",
+                    },
                 ],
             },
             validation: (rule) => rule.required(),

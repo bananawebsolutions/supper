@@ -22,6 +22,7 @@ const categoryFilter = {
         },
         { value: "chiles-secos", label: "Chiles Secos" },
         { value: "paquetes", label: "Paquetes" },
+        { value: "huevo", label: "Huevo" },
     ],
 };
 
