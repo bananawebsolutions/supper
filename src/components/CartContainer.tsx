@@ -29,9 +29,9 @@ const CartContainer = ({ session }: Props) => {
     const [shippingMethod, setShippingMethod] = useState<
         "domicilio" | "pickup"
     >("domicilio");
-    const [pickupLocation, setPickupLocation] = useState<
-        "Bona" | "Parroquia" | "Isla"
-    >("Bona");
+    const [pickupLocation, setPickupLocation] = useState<"Bona" | "Parroquia">(
+        "Bona"
+    );
     const [selectedHour, setSelectedHour] = useState<string>("8:00-9:00");
     const [reservations, setReservations] = useState<Array<Reservation>>();
     const [clientHasReserved, setClientHasReserved] = useState<boolean>(false);
@@ -40,7 +40,6 @@ const CartContainer = ({ session }: Props) => {
 
     // TODO: Possible validation
     const possibleHours = [
-        { hour: "De 8:00 a 9:00 am", value: "8:00-9:00" },
         { hour: "De 9:00 a 10:00 am", value: "9:00-10:00" },
         { hour: "De 10:00 a 11:00 am", value: "10:00-11:00" },
         { hour: "De 11:00 a 12:00 pm", value: "11:00-12:00" },
@@ -49,8 +48,6 @@ const CartContainer = ({ session }: Props) => {
         { hour: "De 14:00 a 15:00 pm", value: "14:00-15:00" },
         { hour: "De 15:00 a 16:00 pm", value: "15:00-16:00" },
         { hour: "De 16:00 a 17:00 pm", value: "16:00-17:00" },
-        { hour: "De 17:00 a 18:00 pm", value: "17:00-18:00" },
-        { hour: "De 18:00 a 19:00 pm", value: "18:00-19:00" },
     ];
     // TODO: Change error handling from checkout for reserve if needed. This with the hours.
 
@@ -236,8 +233,10 @@ const CartContainer = ({ session }: Props) => {
                                     <div>
                                         <p>Selecciona un horario:</p>
                                         <p className="text-gray-500 text-sm">
-                                            Los pedidos corresponden al día de
-                                            mañana
+                                            Los pedidos se entregan al día hábil
+                                            siguiente. Días de entrega: Lunes a
+                                            Sábado. Horarios de entrega: 9:00 am
+                                            a 17:00 pm.
                                         </p>
                                     </div>
                                     <div className="grid grid-cols-2 gap-2 items-center ">
@@ -306,9 +305,6 @@ const CartContainer = ({ session }: Props) => {
                                             className={`border-[1px] font-semibold disabled:text-gray-400 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:border-gray-300/50 px-4 py-3 rounded-md text-gray-700 hoverEffect ${pickupLocation === "Bona" ? "border-green-500 bg-green-100" : "bg-gray-100 border-gray-300/50 hover:bg-gray-200"}`}
                                         >
                                             Plaza Bona
-                                            <span className="block text-sm font-normal text-gray-500">
-                                                Dirección plaza bona
-                                            </span>
                                         </button>
                                         <button
                                             onClick={() =>
@@ -317,23 +313,28 @@ const CartContainer = ({ session }: Props) => {
                                             disabled={!session?.user}
                                             className={`border-[1px] font-semibold disabled:cursor-not-allowed disabled:text-gray-400 disabled:border-gray-300/50 disabled:bg-gray-100 px-4 py-3 rounded-md text-gray-700 hoverEffect ${pickupLocation === "Parroquia" ? "border-green-500 bg-green-100" : "bg-gray-100 border-gray-300/50 hover:bg-gray-200"}`}
                                         >
-                                            Parroquia
-                                            <span className="block text-sm font-normal text-gray-500">
-                                                Dirección de Parroquia
-                                            </span>
+                                            Parroquia de San Fernando
                                         </button>
-                                        <button
-                                            onClick={() =>
-                                                setPickupLocation("Isla")
-                                            }
-                                            disabled={!session?.user}
-                                            className={`border-[1px] disabled:cursor-not-allowed disabled:text-gray-400 disabled:border-gray-300/50 disabled:bg-gray-100 font-semibold px-4 py-3 rounded-md text-gray-700 hoverEffect ${pickupLocation === "Isla" ? "border-green-500 bg-green-100" : "bg-gray-100 border-gray-300/50 hover:bg-gray-200"}`}
-                                        >
-                                            Isla
-                                            <span className="block text-sm font-normal text-gray-500">
-                                                Dirección de Isla
-                                            </span>
-                                        </button>
+                                    </div>
+                                    <div>
+                                        <span className="font-bold text-sm">
+                                            Dirección:
+                                        </span>
+                                        {pickupLocation === "Bona" ? (
+                                            <p className="text-gray-500 text-sm">
+                                                Av. Jorge Jiménez Cantu, Valle
+                                                Escondido, Parroquia de San
+                                                Fernando, CP 52937, Cdad. López
+                                                Mateos, Estado de México.
+                                            </p>
+                                        ) : (
+                                            <p className="text-gray-500 text-sm">
+                                                Av. Jorge Jiménez Cantú Mz 1 Lt
+                                                1, Bosque Esmeralda, CP 52930,
+                                                Cdad. López Mateos, Estado de
+                                                México.
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                             )}

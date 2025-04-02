@@ -23,7 +23,7 @@ export default function PackageCard({ packages }: Props) {
         toast.success(`${product?.title.substring(0, 12)} añadido al carrito`);
     };
     return (
-        <>
+        <div className="flex flex-col gap-6">
             {packages.map((item) => (
                 <div
                     key={item._id}
@@ -76,7 +76,7 @@ export default function PackageCard({ packages }: Props) {
                     )}
 
                     <div
-                        className="py-2 flex justify-center border-t cursor-pointer bg-gray-100"
+                        className="py-2 flex justify-center border-t border-gray-300/50 cursor-pointer bg-gray-100"
                         onClick={() => setIsExpanded(!isExpanded)}
                     >
                         {isExpanded ? (
@@ -97,6 +97,6 @@ export default function PackageCard({ packages }: Props) {
                     </div>
                 </div>
             ))}
-        </>
+        </div>
     );
 }
