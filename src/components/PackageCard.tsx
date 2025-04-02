@@ -16,12 +16,23 @@ interface Props {
 }
 
 export default function PackageCard({ packages }: Props) {
-    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const [expandedCards, setExpandedCards] = useState<{
+        [key: string]: boolean;
+    }>({});
     const dispatch = useDispatch();
+
     const handleAddToCart = (product: ProductData) => {
         dispatch(addToCart(product));
         toast.success(`${product?.title.substring(0, 12)} añadido al carrito`);
     };
+
+    const toggleExpand = (id: string) => {
+        setExpandedCards((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+        }));
+    };
+
     return (
         <div className="flex flex-col gap-6">
             {packages.map((item) => (
@@ -64,7 +75,7 @@ export default function PackageCard({ packages }: Props) {
                         </span>
                     </div>
 
-                    {isExpanded && (
+                    {expandedCards[item._id] && (
                         <div className="px-4 pb-4 text-base">
                             <strong>Contenido del Paquete:</strong>
                             <ul className="list-disc list-inside pl-4">
@@ -77,9 +88,9 @@ export default function PackageCard({ packages }: Props) {
 
                     <div
                         className="py-2 flex justify-center border-t border-gray-300/50 cursor-pointer bg-gray-100"
-                        onClick={() => setIsExpanded(!isExpanded)}
+                        onClick={() => toggleExpand(item._id)}
                     >
-                        {isExpanded ? (
+                        {expandedCards[item._id] ? (
                             <div className="flex items-center gap-x-2">
                                 <span className="text-sm font-semibold tracking-wide">
                                     Ocultar contenido
