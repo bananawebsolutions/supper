@@ -322,17 +322,17 @@ const CartContainer = ({ session }: Props) => {
                                         </span>
                                         {pickupLocation === "Bona" ? (
                                             <p className="text-gray-500 text-sm">
-                                                Av. Jorge Jiménez Cantu, Valle
-                                                Escondido, Parroquia de San
-                                                Fernando, CP 52937, Cdad. López
-                                                Mateos, Estado de México.
-                                            </p>
-                                        ) : (
-                                            <p className="text-gray-500 text-sm">
                                                 Av. Jorge Jiménez Cantú Mz 1 Lt
                                                 1, Bosque Esmeralda, CP 52930,
                                                 Cdad. López Mateos, Estado de
                                                 México.
+                                            </p>
+                                        ) : (
+                                            <p className="text-gray-500 text-sm">
+                                                Av. Jorge Jiménez Cantu, Valle
+                                                Escondido, Parroquia de San
+                                                Fernando, CP 52937, Cdad. López
+                                                Mateos, Estado de México.
                                             </p>
                                         )}
                                     </div>
