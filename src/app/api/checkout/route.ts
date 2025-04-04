@@ -1,6 +1,7 @@
 import { ProductData } from "../../../../types";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import products from "../../../sanity/schemas/products";
 
 const predefinedHours = [
     "9:00-10:00",
@@ -95,53 +96,30 @@ export const POST = async (req: NextRequest) => {
                         (item.quantity || 0) *
                         (1 - item?.rowprice || 1),
                 };
-                // } else if (item.productType === "m-kg-p") {
-                //     const totalQuantity =
-                //         (item.matureQuantity || 0) +
-                //         (item.greenQuantity || 0) +
-                //         (item.quantity || 0);
-                //     const totalPrice =
-                //         (item.kgPrice *
-                //             (item.matureQuantity || 0 + item.greenQuantity || 0) +
-                //             item.pPrice * (item.quantity || 0)) *
-                //         (1 - item?.rowprice || 1);
-                //     return {
-                //         quantity: totalQuantity,
-                //         price: totalPrice,
-                //     };
-                // } else if (item.productType === "kg-p") {
-                //     const totalQuantity =
-                //         (item.quantity || 0) + (item.kgQuantity || 0);
-                //     const totalPrice =
-                //         (item.kgPrice * (item.kgQuantity || 0) +
-                //             item.pPrice * (item.quantity || 0)) *
-                //         (1 - item?.rowprice || 1);
-                //     return {
-                //         quantity: totalQuantity,
-                //         price: totalPrice,
-                //     };
             } else if (item.productType === "100g") {
                 return {
-                    quantity: item.kgQuantity || 0,
+                    quantity: item.kgQuantity * 100 || 0,
                     price:
-                        item.gramsPrice *
-                        10 *
-                        (item.kgQuantity || 0) *
+                        (item.gramsPrice / 10) *
+                        (item.kgQuantity * 100 || 0) *
                         (1 - item?.rowprice || 1),
                 };
             } else if (item.productType === "kg") {
                 return {
-                    quantity: item.kgQuantity || 0,
+                    quantity: item.kgQuantity * 100 || 0,
                     price:
-                        item.kgPrice *
-                        (item.kgQuantity || 0) *
+                        (item.kgPrice / 100) *
+                        (item.kgQuantity * 100 || 0) *
                         (1 - item?.rowprice || 1),
                 };
             } else if (item.productType === "m-kg") {
                 const totalQuantity =
-                    (item.matureQuantity || 0) + (item.greenQuantity || 0);
+                    (item.matureQuantity * 100 || 0) +
+                    (item.greenQuantity * 100 || 0);
                 const totalPrice =
-                    item.kgPrice * totalQuantity * (1 - item?.rowprice || 1);
+                    (item.kgPrice / 100) *
+                    totalQuantity *
+                    (1 - item?.rowprice || 1);
                 return {
                     quantity: totalQuantity,
                     price: totalPrice,
@@ -154,12 +132,10 @@ export const POST = async (req: NextRequest) => {
         const extractingItems = await items?.map((item: ProductData) => {
             const { quantity, price } = quantitySelect(item);
             return {
-                quantity: quantity,
+                quantity,
                 price_data: {
                     currency: "mxn",
-                    unit_amount: Math.round(
-                        (price * 100) / (quantity ? quantity : 1)
-                    ),
+                    unit_amount: Math.round((price * 100) / quantity || 1),
                     product_data: {
                         name: item?.title,
                         description: item?.description,
@@ -202,7 +178,17 @@ export const POST = async (req: NextRequest) => {
         });
 
         return NextResponse.json({ url: session?.url }, { status: 200 });
-    } catch (error) {
-        return NextResponse.json({ error: error }, { status: 500 });
+    } catch (error: any) {
+        console.error("Checkout Error:", error);
+        return NextResponse.json(
+            {
+                error:
+                    error.message ||
+                    "Ha ocurrido un error durante el proceso de pago",
+            },
+            {
+                status: 500,
+            }
+        );
     }
 };

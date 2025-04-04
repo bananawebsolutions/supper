@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-const quantitySchema = z.number().min(0).max(100);
+const quantitySchema = z.number().min(0.1).max(100);
 
 export async function POST(request: Request) {
     const { quantity } = await request.json();

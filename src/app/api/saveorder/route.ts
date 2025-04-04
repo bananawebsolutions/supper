@@ -24,6 +24,12 @@ export const POST = async (req: NextRequest) => {
                 await userOrderReference.set({ email });
             }
             await userOrderReference.set({ value: orderItem }, { merge: true });
+
+            // Save order items into separate collection
+            const packagesCollection = adminDB
+                .collection("packages")
+                .doc("green-package");
+            await packagesCollection.set({ items: orderItem.items });
         }
 
         return NextResponse.json(
