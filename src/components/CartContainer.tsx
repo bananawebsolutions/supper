@@ -60,24 +60,22 @@ const CartContainer = ({ session }: Props) => {
 
             if (item?.productType === "p") {
                 itemTotal =
-                    (item.pPrice || 0) *
-                    (item.quantity || 0) *
-                    (1 - item.rowprice || 1);
+                    ((item.pPrice || 0) - (item?.rowprice || 0)) *
+                    (item.quantity || 0);
             } else if (item?.productType === "m-kg") {
                 itemTotal =
-                    ((item.matureQuantity || 0) * (item.kgPrice || 0) +
-                        (item.greenQuantity || 0) * (item.kgPrice || 0)) *
-                    (1 - item.rowprice || 1);
+                    (item.matureQuantity || 0) *
+                        ((item.kgPrice || 0) - (item.rowprice || 0)) +
+                    (item.greenQuantity || 0) *
+                        ((item.kgPrice || 0) - (item.rowprice || 0));
             } else if (item?.productType === "kg") {
                 itemTotal =
                     (item.kgQuantity || 0) *
-                    (item.kgPrice || 0) *
-                    (1 - item.rowprice || 1);
+                    ((item.kgPrice || 0) - (item.rowprice || 0));
             } else if (item?.productType === "100g") {
                 itemTotal =
                     (item.kgQuantity || 0) *
-                    (item.gramsPrice * 10 || 0) *
-                    (1 - item.rowprice || 1);
+                    ((item.gramsPrice * 10 || 0) - (item?.rowprice || 0));
                 // } else if (item?.productType === "m-kg-p") {
                 //     itemTotal =
                 //         ((item.matureQuantity || 0) * (item.kgPrice || 0) +

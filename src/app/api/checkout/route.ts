@@ -92,34 +92,30 @@ export const POST = async (req: NextRequest) => {
                 return {
                     quantity: item.quantity || 0,
                     price:
-                        item.pPrice *
-                        (item.quantity || 0) *
-                        (1 - item?.rowprice || 1),
+                        (item.pPrice - (item?.rowprice || 0)) *
+                        (item.quantity || 0),
                 };
             } else if (item.productType === "100g") {
                 return {
                     quantity: item.kgQuantity * 100 || 0,
                     price:
-                        (item.gramsPrice / 10) *
-                        (item.kgQuantity * 100 || 0) *
-                        (1 - item?.rowprice || 1),
+                        (item.gramsPrice / 10 - (item?.rowprice / 10 || 0)) *
+                        (item.kgQuantity * 100 || 0),
                 };
             } else if (item.productType === "kg") {
                 return {
                     quantity: item.kgQuantity * 100 || 0,
                     price:
-                        (item.kgPrice / 100) *
-                        (item.kgQuantity * 100 || 0) *
-                        (1 - item?.rowprice || 1),
+                        (item.kgPrice / 100 - (item?.rowprice || 0)) *
+                        (item.kgQuantity * 100 || 0),
                 };
             } else if (item.productType === "m-kg") {
                 const totalQuantity =
                     (item.matureQuantity * 100 || 0) +
                     (item.greenQuantity * 100 || 0);
                 const totalPrice =
-                    (item.kgPrice / 100) *
-                    totalQuantity *
-                    (1 - item?.rowprice || 1);
+                    (item.kgPrice / 100 - (item?.rowprice / 100 || 0)) *
+                    totalQuantity;
                 return {
                     quantity: totalQuantity,
                     price: totalPrice,

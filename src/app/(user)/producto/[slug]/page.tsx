@@ -106,8 +106,8 @@ const SingleProductPage = async ({ params }: Props) => {
                                     {product?.productType === "kg" && (
                                         <FormattedPrice
                                             amount={
-                                                product?.kgPrice *
-                                                (1 - product?.rowprice)
+                                                product?.kgPrice -
+                                                product?.rowprice
                                             }
                                             className="text-lg font-bold text-green-900"
                                         />
@@ -115,8 +115,8 @@ const SingleProductPage = async ({ params }: Props) => {
                                     {product?.productType === "m-kg" && (
                                         <FormattedPrice
                                             amount={
-                                                product?.kgPrice *
-                                                (1 - product?.rowprice)
+                                                product?.kgPrice -
+                                                product?.rowprice
                                             }
                                             className="text-lg font-bold text-green-900"
                                         />
@@ -124,8 +124,8 @@ const SingleProductPage = async ({ params }: Props) => {
                                     {product.productType === "p" && (
                                         <FormattedPrice
                                             amount={
-                                                product?.pPrice *
-                                                (1 - product?.rowprice)
+                                                product?.pPrice -
+                                                product?.rowprice
                                             }
                                             className="text-lg font-bold text-green-900"
                                         />
@@ -133,8 +133,8 @@ const SingleProductPage = async ({ params }: Props) => {
                                     {product.productType === "100g" && (
                                         <FormattedPrice
                                             amount={
-                                                product?.gramsPrice *
-                                                (1 - product?.rowprice)
+                                                product?.gramsPrice -
+                                                product?.rowprice
                                             }
                                             className="text-lg font-bold text-green-900"
                                         />
@@ -162,7 +162,14 @@ const SingleProductPage = async ({ params }: Props) => {
                                     <p>
                                         Ahorraste en este producto{" "}
                                         <span className="bg-green-600 font-semibold text-sm text-white rounded-full px-3 py-1">
-                                            {product?.rowprice * 100}%
+                                            {(
+                                                (product?.rowprice /
+                                                    (product?.pPrice ||
+                                                        product?.kgPrice ||
+                                                        product?.gramsPrice)) *
+                                                100
+                                            ).toFixed(2)}
+                                            %
                                         </span>
                                     </p>
                                 </>

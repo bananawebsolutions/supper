@@ -36,20 +36,19 @@ const SuccessContainer = ({ id }: { id: string }) => {
             let itemTotal = 0;
 
             if (item?.productType === "p") {
-                itemTotal =
-                    item.pPrice * item.quantity * (1 - item.rowprice || 1);
+                itemTotal = item.pPrice * item.quantity - (item?.rowprice || 0);
             } else if (item?.productType === "m-kg") {
                 itemTotal =
-                    ((item.matureQuantity || 0) * item.kgPrice +
-                        (item.greenQuantity || 0) * item.kgPrice) *
-                    (1 - item.rowprice || 1);
+                    (item.matureQuantity || 0) *
+                        (item.kgPrice - (item?.rowprice || 0)) +
+                    (item.greenQuantity || 0) *
+                        (item.kgPrice - (item?.rowprice || 0));
             } else if (item?.productType === "kg") {
                 itemTotal =
-                    item.kgPrice * item.kgQuantity * (1 - item.rowprice || 1);
+                    (item.kgPrice - (item?.rowprice || 0)) * item.kgQuantity;
             } else if (item?.productType === "100g") {
                 itemTotal =
-                    item.gramsPrice *
-                    10 *
+                    (item.gramsPrice * 10 - (item.rowprice * 10 || 0)) *
                     item.kgQuantity *
                     (1 - item.rowprice || 1);
             }

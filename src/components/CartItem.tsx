@@ -44,24 +44,22 @@ const CartItem = ({ item }: Props) => {
                 <p className="flex w-1/3 items-center text-lg font-semibold">
                     {item?.productType === "m-kg" && (
                         <FormattedPrice
-                            amount={item?.kgPrice * (1 - item?.rowprice || 1)}
+                            amount={item?.kgPrice - (item?.rowprice || 0)}
                         />
                     )}
                     {item?.productType === "p" && (
                         <FormattedPrice
-                            amount={item?.pPrice * (1 - item?.rowprice || 1)}
+                            amount={item?.pPrice - (item?.rowprice || 0)}
                         />
                     )}
                     {item?.productType === "kg" && (
                         <FormattedPrice
-                            amount={item?.kgPrice * (1 - item?.rowprice || 1)}
+                            amount={item?.kgPrice - (item?.rowprice || 0)}
                         />
                     )}
                     {item?.productType === "100g" && (
                         <FormattedPrice
-                            amount={
-                                item?.gramsPrice * (1 - item?.rowprice || 1)
-                            }
+                            amount={item?.gramsPrice - (item?.rowprice || 0)}
                         />
                     )}
                 </p>
@@ -123,48 +121,13 @@ const CartItem = ({ item }: Props) => {
                             {item?.kgQuantity} kg
                         </p>
                     )}
-                    {/* {item?.productType === "kg-p" && (
-                        <div className="flex flex-col gap-2">
-                            <p className="text-sm font-semibold">
-                                <span>Kg: </span>
-                                {item?.kgQuantity ? item.kgQuantity : 0} Kg
-                            </p>
-                            <p className="text-sm font-semibold">
-                                <span>Cantidad: </span>
-                                {item?.quantity ? item.quantity : 0}
-                            </p>
-                        </div>
-                    )} */}
-                    {/* {item?.productType === "m-kg-p" && (
-                        <div className="flex flex-col gap-2">
-                            <p className="text-sm font-semibold">
-                                <span>Maduro: </span>
-                                {item?.matureQuantity
-                                    ? item.matureQuantity
-                                    : 0}{" "}
-                                Kg
-                            </p>
-                            <p className="text-sm font-semibold">
-                                <span>Verde: </span>
-                                {item?.greenQuantity
-                                    ? item.greenQuantity
-                                    : 0}{" "}
-                                Kg
-                            </p>
-                            <p className="text-sm font-semibold">
-                                <span>Cantidad: </span>
-                                {item?.quantity ? item.quantity : 0}
-                            </p>
-                        </div>
-                    )} */}
                 </div>
                 <div className="w-1/3 flex items-center font-bold text-lg">
                     {item?.productType === "p" && (
                         <FormattedPrice
                             amount={
                                 item?.quantity *
-                                item?.pPrice *
-                                (1 - item?.rowprice || 1)
+                                (item?.pPrice - (item?.rowprice || 0))
                             }
                         />
                     )}
@@ -172,31 +135,34 @@ const CartItem = ({ item }: Props) => {
                         <FormattedPrice
                             amount={
                                 (item?.matureQuantity
-                                    ? item.matureQuantity * item.kgPrice
-                                    : 0) *
-                                    (1 - item?.rowprice || 1) +
+                                    ? item.matureQuantity *
+                                      (item.kgPrice - (item?.rowprice || 0))
+                                    : 0) +
                                 (item?.greenQuantity
-                                    ? item.greenQuantity * item.kgPrice
-                                    : 0) *
-                                    (1 - item?.rowprice || 1)
+                                    ? item.greenQuantity *
+                                      (item.kgPrice - (item?.rowprice || 0))
+                                    : 0)
                             }
                         />
                     )}
                     {item?.productType === "kg" && (
                         <FormattedPrice
                             amount={
-                                (item?.kgQuantity
-                                    ? item.kgQuantity * item.kgPrice
-                                    : 0) * (1 - item?.rowprice || 1)
+                                item?.kgQuantity
+                                    ? item.kgQuantity *
+                                      (item.kgPrice - (item?.rowprice || 0))
+                                    : 0
                             }
                         />
                     )}
                     {item?.productType === "100g" && (
                         <FormattedPrice
                             amount={
-                                (item?.kgQuantity
-                                    ? item.kgQuantity * item.gramsPrice * 10
-                                    : 0) * (1 - item?.rowprice || 1)
+                                item?.kgQuantity
+                                    ? item.kgQuantity *
+                                      (item.gramsPrice * 10 -
+                                          (item?.rowprice * 10 || 0))
+                                    : 0
                             }
                         />
                     )}

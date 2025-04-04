@@ -197,10 +197,9 @@ const Orders = () => {
                                                                                     "kg" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.kgPrice *
-                                                                                            (1 -
-                                                                                                product?.rowprice ||
-                                                                                                1)
+                                                                                            product?.kgPrice -
+                                                                                            (product?.rowprice ||
+                                                                                                0)
                                                                                         }
                                                                                     />
                                                                                 )}
@@ -208,10 +207,9 @@ const Orders = () => {
                                                                                     "p" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.pPrice *
-                                                                                            (1 -
-                                                                                                product?.rowprice ||
-                                                                                                1)
+                                                                                            product?.pPrice -
+                                                                                            (product?.rowprice ||
+                                                                                                0)
                                                                                         }
                                                                                     />
                                                                                 )}
@@ -219,10 +217,9 @@ const Orders = () => {
                                                                                     "m-kg" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.kgPrice *
-                                                                                            (1 -
-                                                                                                product?.rowprice ||
-                                                                                                1)
+                                                                                            product?.kgPrice -
+                                                                                            (product?.rowprice ||
+                                                                                                0)
                                                                                         }
                                                                                     />
                                                                                 )}
@@ -230,10 +227,9 @@ const Orders = () => {
                                                                                     "100g" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.gramsPrice *
-                                                                                            (1 -
-                                                                                                product.rowprice ||
-                                                                                                1)
+                                                                                            product?.gramsPrice -
+                                                                                            (product?.rowprice ||
+                                                                                                0)
                                                                                         }
                                                                                     />
                                                                                 )}
@@ -288,11 +284,10 @@ const Orders = () => {
                                                                                     "kg" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.kgPrice *
-                                                                                            product?.kgQuantity *
-                                                                                            (1 -
-                                                                                                product?.rowprice ||
-                                                                                                1)
+                                                                                            (product?.kgPrice -
+                                                                                                (product?.rowprice ||
+                                                                                                    0)) *
+                                                                                            product?.kgQuantity
                                                                                         }
                                                                                     />
                                                                                 )}
@@ -300,11 +295,10 @@ const Orders = () => {
                                                                                     "p" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.pPrice *
-                                                                                            product?.quantity *
-                                                                                            (1 -
-                                                                                                product?.rowprice ||
-                                                                                                1)
+                                                                                            (product?.pPrice -
+                                                                                                (product?.rowprice ||
+                                                                                                    0)) *
+                                                                                            product?.quantity
                                                                                         }
                                                                                     />
                                                                                 )}
@@ -312,15 +306,16 @@ const Orders = () => {
                                                                                     "m-kg" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            ((product?.matureQuantity ||
+                                                                                            (product?.matureQuantity ||
                                                                                                 0) *
-                                                                                                product?.kgPrice +
-                                                                                                (product?.greenQuantity ||
-                                                                                                    0) *
-                                                                                                    product?.kgPrice) *
-                                                                                            (1 -
-                                                                                                product?.rowprice ||
-                                                                                                1)
+                                                                                                (product?.kgPrice -
+                                                                                                    (product?.rowprice ||
+                                                                                                        0)) +
+                                                                                            (product?.greenQuantity ||
+                                                                                                0) *
+                                                                                                (product?.kgPrice -
+                                                                                                    (product?.rowprice ||
+                                                                                                        0))
                                                                                         }
                                                                                     />
                                                                                 )}
@@ -328,12 +323,11 @@ const Orders = () => {
                                                                                     "100g" && (
                                                                                     <FormattedPrice
                                                                                         amount={
-                                                                                            product?.gramsPrice *
-                                                                                            10 *
-                                                                                            product?.kgQuantity *
-                                                                                            (1 -
-                                                                                                product.rowprice ||
-                                                                                                1)
+                                                                                            (product?.gramsPrice *
+                                                                                                10 -
+                                                                                                (product?.rowprice ||
+                                                                                                    0)) *
+                                                                                            product?.kgQuantity
                                                                                         }
                                                                                     />
                                                                                 )}

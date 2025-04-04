@@ -71,7 +71,7 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                             {item?.productType === "kg" && (
                                 <FormattedPrice
                                     amount={
-                                        item?.kgPrice * (1 - item?.rowprice)
+                                        item?.kgPrice - (item?.rowprice || 0)
                                     }
                                     className="text-green-900 font-bold"
                                 />
@@ -79,7 +79,7 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                             {item?.productType === "m-kg" && (
                                 <FormattedPrice
                                     amount={
-                                        item?.kgPrice * (1 - item?.rowprice)
+                                        item?.kgPrice - (item?.rowprice || 0)
                                     }
                                     className="text-green-900 font-bold"
                                 />
@@ -87,14 +87,16 @@ const ProductCard = ({ item }: { item: ProductData }) => {
                             {item?.productType === "p" && (
                                 <FormattedPrice
                                     className="text-green-900 font-bold"
-                                    amount={item?.pPrice * (1 - item?.rowprice)}
+                                    amount={
+                                        item?.pPrice - (item?.rowprice || 0)
+                                    }
                                 />
                             )}
                             {item?.productType === "100g" && (
                                 <FormattedPrice
                                     className="text-green-900 font-bold"
                                     amount={
-                                        item?.gramsPrice * (1 - item?.rowprice)
+                                        item?.gramsPrice - (item?.rowprice || 0)
                                     }
                                 />
                             )}
