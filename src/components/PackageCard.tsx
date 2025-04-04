@@ -67,7 +67,7 @@ export default function PackageCard({ packages }: Props) {
                         </div>
                         <button
                             onClick={() => {
-                                handleAddToCart("green-package");
+                                handleAddToCart(item.dbId);
                             }}
                             className="mr-4 bg-primaryBlue hover:bg-blue-400 px-6 py-2 rounded-full text-white font-semibold hoverEffect"
                         >

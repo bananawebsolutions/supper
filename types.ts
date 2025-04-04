@@ -33,6 +33,7 @@ export interface Category {
 
 export interface Package {
     _id: string;
+    dbId: string;
     _updatedAt: string;
     _createdAt: string;
     _type: string;
