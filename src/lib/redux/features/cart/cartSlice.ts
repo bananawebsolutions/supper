@@ -100,6 +100,10 @@ export const cartSlice = createSlice({
                             (existingItem.greenQuantity || 0) +
                             newItem.greenQuantity;
                     }
+                    if (newItem.kgQuantity) {
+                        existingItem.kgQuantity =
+                            (existingItem.kgQuantity || 0) + newItem.kgQuantity;
+                    }
                 } else {
                     // If item doesn't exist, add it to cart
                     state.cartItems.push({

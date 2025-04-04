@@ -11,6 +11,12 @@ export default defineType({
             type: "string",
         }),
         defineField({
+            name: "dbId",
+            title: "Database Document ID",
+            type: "string",
+            validation: (rule) => rule.required(),
+        }),
+        defineField({
             name: "slug",
             title: "Slug",
             type: "slug",

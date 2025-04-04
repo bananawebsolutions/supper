@@ -1,15 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import FormattedPrice from "./FormattedPrice";
 import { Package, ProductData } from "../../types";
 import { urlFor } from "../sanity/lib/image";
 import { useDispatch } from "react-redux";
-import { getProductData } from "../server/actions/get-product-data";
+// import { getProductData } from "../server/actions/get-product-data";
 import toast from "react-hot-toast";
-import { addToCart } from "../lib/redux/features/cart/cartSlice";
+import {
+    // addToCart,
+    addToCartBatch,
+} from "../lib/redux/features/cart/cartSlice";
+import { getPackagesData } from "../server/actions/get-packages-data";
 
 interface Props {
     packages: Package[];
@@ -19,11 +23,16 @@ export default function PackageCard({ packages }: Props) {
     const [expandedCards, setExpandedCards] = useState<{
         [key: string]: boolean;
     }>({});
+
     const dispatch = useDispatch();
 
-    const handleAddToCart = (product: ProductData) => {
-        dispatch(addToCart(product));
-        toast.success(`${product?.title.substring(0, 12)} añadido al carrito`);
+    const handleAddToCart = async (packageId: string) => {
+        const packageData = (await getPackagesData(packageId).then((data) => {
+            return data?.items;
+        })) as ProductData[];
+
+        dispatch(addToCartBatch(packageData));
+        toast.success("Paquete agregado al carrito");
     };
 
     const toggleExpand = (id: string) => {
@@ -57,11 +66,8 @@ export default function PackageCard({ packages }: Props) {
                             </p>
                         </div>
                         <button
-                            onClick={async () => {
-                                const product = await getProductData({
-                                    slug: item.slug,
-                                });
-                                handleAddToCart(product);
+                            onClick={() => {
+                                handleAddToCart("green-package");
                             }}
                             className="mr-4 bg-primaryBlue hover:bg-blue-400 px-6 py-2 rounded-full text-white font-semibold hoverEffect"
                         >
@@ -79,7 +85,7 @@ export default function PackageCard({ packages }: Props) {
                         <div className="px-4 pb-4 text-base">
                             <strong>Contenido del Paquete:</strong>
                             <ul className="list-disc list-inside pl-4">
-                                {item.included.map((item, index) => (
+                                {item.included.map((item: any, index: any) => (
                                     <li key={index}>{item}</li>
                                 ))}
                             </ul>
