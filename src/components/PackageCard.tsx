@@ -85,7 +85,7 @@ export default function PackageCard({ packages }: Props) {
                         <div className="px-4 pb-4 text-base">
                             <strong>Contenido del Paquete:</strong>
                             <ul className="list-disc list-inside pl-4">
-                                {item.included.map((item: any, index: any) => (
+                                {item.included.map((item, index: number) => (
                                     <li key={index}>{item}</li>
                                 ))}
                             </ul>

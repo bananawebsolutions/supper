@@ -173,13 +173,12 @@ export const POST = async (req: NextRequest) => {
         });
 
         return NextResponse.json({ url: session?.url }, { status: 200 });
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Checkout Error:", error);
         return NextResponse.json(
             {
                 error:
-                    error.message ||
-                    "Ha ocurrido un error durante el proceso de pago",
+                    error || "Ha ocurrido un error durante el proceso de pago",
             },
             {
                 status: 500,
