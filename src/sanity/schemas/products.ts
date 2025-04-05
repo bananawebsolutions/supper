@@ -62,10 +62,6 @@ export default defineType({
                     },
                     { value: "chiles-secos", title: "Chiles Secos" },
                     {
-                        title: "Paquetes",
-                        value: "paquetes",
-                    },
-                    {
                         title: "Huevo",
                         value: "huevo",
                     },
