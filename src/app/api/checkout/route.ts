@@ -1,7 +1,6 @@
 import { ProductData } from "../../../../types";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import products from "../../../sanity/schemas/products";
 
 const predefinedHours = [
     "9:00-10:00",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import FormattedPrice from "./FormattedPrice";
