@@ -2,6 +2,7 @@ import CategoryCard from "../../../components/CategoryCard";
 import Container from "../../../components/Container";
 import { getCategoriesData } from "../../../lib/getData";
 import { Category } from "../../../../types";
+import Image from "next/image";
 
 const CategoriesPage = async () => {
     const categories: Category[] = await getCategoriesData();

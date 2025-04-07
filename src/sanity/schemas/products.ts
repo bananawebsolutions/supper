@@ -65,6 +65,10 @@ export default defineType({
                         title: "Huevo",
                         value: "huevo",
                     },
+                    {
+                        title: "Helados y Paletas",
+                        value: "helados-y-paletas",
+                    },
                 ],
             },
             validation: (rule) => rule.required(),

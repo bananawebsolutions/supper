@@ -22,6 +22,10 @@ const categoryFilter = {
         },
         { value: "chiles-secos", label: "Chiles Secos" },
         { value: "huevo", label: "Huevo" },
+        {
+            value: "helados-y-paletas",
+            label: "Helados y Paletas",
+        },
     ],
 };
 
