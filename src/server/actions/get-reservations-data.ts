@@ -34,8 +34,8 @@ export const getReservationsData = async ({
             const mexicoCityTime = new Date().toLocaleString("es-MX", {
                 timeZone: "America/Mexico_City",
             });
-            const isSaturday = new Date(mexicoCityTime).getDay() === 6; // 6 represents Saturday
-            if (hourData.lastReset !== today && !isSaturday) {
+            const isSunday = new Date(mexicoCityTime).getDay() === 7; // 6 represents Saturday
+            if (hourData.lastReset !== today && !isSunday) {
                 await docSnap.ref.update({
                     reservations: [],
                     lastReset: today, // Reset total orders
