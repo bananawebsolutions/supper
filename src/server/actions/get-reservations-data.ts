@@ -20,7 +20,9 @@ export const getReservationsData = async ({
     clientId,
     selectedHour,
 }: Props) => {
-    const today = new Date().toLocaleDateString("es-MX").split("T")[0]; // Get current date as YYYY-MM-DD
+    const today = new Date()
+        .toLocaleDateString("es-MX", { timeZone: "America/Mexico_City" })
+        .split("T")[0]; // Get current date as YYYY-MM-DD
 
     try {
         // Reset all hours if it's a new day
@@ -29,7 +31,11 @@ export const getReservationsData = async ({
 
         for (const docSnap of hoursQuerySnapshot.docs) {
             const hourData = docSnap.data() as HourData;
-            if (hourData.lastReset !== today) {
+            const mexicoCityTime = new Date().toLocaleString("es-MX", {
+                timeZone: "America/Mexico_City",
+            });
+            const isSaturday = new Date(mexicoCityTime).getDay() === 6; // 6 represents Saturday
+            if (hourData.lastReset !== today && !isSaturday) {
                 await docSnap.ref.update({
                     reservations: [],
                     lastReset: today, // Reset total orders
