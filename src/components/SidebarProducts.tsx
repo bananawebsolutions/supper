@@ -36,6 +36,7 @@ const brandFilter = {
         { value: "generico", label: "Genérico" },
         { value: "variado", label: "Variado" },
         { value: "bimbo", label: "Bimbo" },
+        { value: "la parroquia", label: "La Parroquia" },
         { value: "pronto", label: "Pronto" },
         { value: "verde valle", label: "Verde Valle" },
         { value: "la fina", label: "La Fina" },
