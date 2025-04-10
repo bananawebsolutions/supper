@@ -6,7 +6,10 @@
     "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
     "features": {
         "ghcr.io/devcontainers-extra/features/prisma:2": {},
-        "ghcr.io/braun-daniel/devcontainer-features/fzf:1": {}
+        "ghcr.io/braun-daniel/devcontainer-features/fzf:1": {},
+        "ghcr.io/devcontainers/features/sshd:1": {
+        "version": "latest"
+    }
     },
     "waitFor": "onCreateCommand",
     "updateContentCommand": "npm install",
