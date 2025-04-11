@@ -291,7 +291,7 @@ const CartContainer = ({ session }: Props) => {
                                         Lugar de recolección:
                                         <span className="text-sm text-gray-500 block">
                                             Los pedidos se entregan de de 9:00
-                                            am a 17:00 pm
+                                            am a 17:00 pm. De Lunes a Sábado.
                                         </span>
                                     </p>
                                     <div className="flex items-center gap-x-3">
@@ -320,17 +320,20 @@ const CartContainer = ({ session }: Props) => {
                                         </span>
                                         {pickupLocation === "Bona" ? (
                                             <p className="text-gray-500 text-sm">
-                                                Av. Jorge Jiménez Cantú Mz 1 Lt
-                                                1, Bosque Esmeralda, CP 52930,
-                                                Cdad. López Mateos, Estado de
-                                                México.
+                                                Paleteria “La Parroquia” -
+                                                Sucursal Plaza Bona. Av. Jorge
+                                                Jiménez Cantú Mz 1 Lt 1, Bosque
+                                                Esmeralda, CP 52930, Cdad. López
+                                                Mateos, Estado de México.
                                             </p>
                                         ) : (
                                             <p className="text-gray-500 text-sm">
-                                                Av. Jorge Jiménez Cantu, Valle
-                                                Escondido, Parroquia de San
-                                                Fernando, CP 52937, Cdad. López
-                                                Mateos, Estado de México.
+                                                Paleteria “La Parroquia” -
+                                                Sucursal San Fernando. Av. Jorge
+                                                Jiménez Cantu, Valle Escondido,
+                                                Parroquia de San Fernando, CP
+                                                52937, Cdad. López Mateos,
+                                                Estado de México.
                                             </p>
                                         )}
                                     </div>
