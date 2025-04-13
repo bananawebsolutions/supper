@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-import FormattedPrice from "./FormattedPrice";
+// import FormattedPrice from "./FormattedPrice";
 import { Package, ProductData } from "../../types";
 import { urlFor } from "../sanity/lib/image";
 import { useDispatch } from "react-redux";
