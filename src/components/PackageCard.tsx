@@ -73,12 +73,12 @@ export default function PackageCard({ packages }: Props) {
                         >
                             Agregar al carrito
                         </button>
-                        <span className="text-lg font-bold">
+                        {/* <span className="text-lg font-bold">
                             <FormattedPrice
                                 amount={item.price}
                                 className="font-bold text-xl text-green-900"
                             />
-                        </span>
+                        </span> */}
                     </div>
 
                     {expandedCards[item._id] && (

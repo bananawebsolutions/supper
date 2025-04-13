@@ -98,14 +98,14 @@ export const POST = async (req: NextRequest) => {
                 return {
                     quantity: item.kgQuantity * 100 || 0,
                     price:
-                        (item.gramsPrice / 10 - (item?.rowprice / 10 || 0)) *
+                        (item.gramsPrice / 10 - (item?.rowprice / 100 || 0)) *
                         (item.kgQuantity * 100 || 0),
                 };
             } else if (item.productType === "kg") {
                 return {
                     quantity: item.kgQuantity * 100 || 0,
                     price:
-                        (item.kgPrice / 100 - (item?.rowprice || 0)) *
+                        (item.kgPrice / 100 - (item?.rowprice / 100 || 0)) *
                         (item.kgQuantity * 100 || 0),
                 };
             } else if (item.productType === "m-kg") {
