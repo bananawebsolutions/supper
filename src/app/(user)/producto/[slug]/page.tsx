@@ -225,6 +225,14 @@ const SingleProductPage = async ({ params }: Props) => {
                         <p className="text-black/60 text-sm tracking-wide">
                             {product?.description}
                         </p>
+                        {product?.kgPerPiece && (
+                            <div>
+                                <p className="font-bold text-sm">
+                                    Una pieza de este producto pesa aprox.{" "}
+                                    {product.kgPerPiece} Kg.
+                                </p>
+                            </div>
+                        )}
                         {addToCartOptions(product)}
                         <p className="font-normal text-sm">
                             <span className="font-base font-medium">

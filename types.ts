@@ -56,6 +56,7 @@ export interface ProductData {
     productType: "m-kg" | "100g" | "kg" | "p";
     productCategory: string;
     selectedAmounts: SelectedAmount[];
+    kgPerPiece?: string;
     image: ImageAsset;
     quantity: number;
     matureQuantity: number;

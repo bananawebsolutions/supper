@@ -139,6 +139,12 @@ export default defineType({
             hidden: ({ parent }) => parent?.productType !== "m-kg",
         }),
         defineField({
+            name: "kgPerPiece",
+            type: "string",
+            title: "Kg Per Piece Aprox",
+            hidden: ({ parent }) => parent?.productType !== "p",
+        }),
+        defineField({
             name: "greenQuantity",
             title: "Green Quantity (Kg)",
             type: "number",
