@@ -101,7 +101,6 @@ export default defineType({
             name: "pPrice",
             title: "P Price",
             type: "number",
-            hidden: ({ parent }) => parent?.productType !== "p",
             validation: (Rule) =>
                 Rule.custom((value, context) => {
                     const parent = context.parent as { productType?: string };
