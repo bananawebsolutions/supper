@@ -102,6 +102,14 @@ export default defineType({
             title: "P Price",
             type: "number",
             hidden: ({ parent }) => parent?.productType !== "p",
+            validation: (Rule) =>
+                Rule.custom((value, context) => {
+                    const parent = context.parent as { productType?: string };
+                    if (parent?.productType !== "p" && value !== undefined) {
+                        return 'pPrice should only be set when productType is "p"';
+                    }
+                    return true;
+                }),
         }),
         defineField({
             name: "gramsPrice",
