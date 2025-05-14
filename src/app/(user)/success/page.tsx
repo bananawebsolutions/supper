@@ -24,7 +24,7 @@ const SuccessPage = async ({ searchParams }: Props) => {
             const session = await stripe.checkout.sessions.retrieve(session_id);
             phoneNumber = session.customer_details?.phone || null;
         } catch (e) {
-            // ignore error, phoneNumber remains null
+            console.error("Error retrieving session:", e);
         }
     }
 
