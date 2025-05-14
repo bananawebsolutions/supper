@@ -36,7 +36,7 @@ export const sendLink = async (
         return <DEFAULT_STATE>{
             error: "",
             success:
-                "Se ha enviado un link a tu correo electrónico. Por favor, revisa que no esté en la bandeja de spam.",
+                "Se ha enviado un link a tu correo electrónico. Por favor, revisa tu bandeja de spam.",
         };
     } catch (error) {
         return <DEFAULT_STATE>{
