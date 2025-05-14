@@ -15,7 +15,13 @@ import {
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-const SuccessContainer = ({ id }: { id: string }) => {
+const SuccessContainer = ({
+    id,
+    phoneNumber,
+}: {
+    id: string;
+    phoneNumber?: string | null;
+}) => {
     const { cartItems } = useSelector((state: StoreState) => state?.cart);
     const dispatch = useDispatch();
     const searchParams = useSearchParams();
@@ -97,6 +103,7 @@ const SuccessContainer = ({ id }: { id: string }) => {
                     email: session?.user?.email as string,
                     id: id,
                     totalAmount,
+                    phoneNumber,
                 }),
             });
             const data = await response.json();

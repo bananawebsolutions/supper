@@ -4,12 +4,14 @@ import { NextRequest, NextResponse } from "next/server";
 export const POST = async (req: NextRequest) => {
     try {
         const reqBody = await req.json();
-        const { cartItems, email, id, totalAmount, shipping } = await reqBody;
+        const { cartItems, email, id, totalAmount, shipping, phoneNumber } =
+            await reqBody;
 
         const orderItem = {
             amount: totalAmount,
             shipping: shipping,
             items: cartItems || [],
+            phoneNumber: phoneNumber || null, // save phone number
         };
 
         if (cartItems?.length) {
@@ -18,6 +20,16 @@ export const POST = async (req: NextRequest) => {
                 .doc(email)
                 .collection("orders")
                 .doc(id);
+
+            // Add phoneNumber to the user's document if it doesn't already exist
+            const userDocRef = adminDB.collection("usersInfo").doc(email);
+            const userDocSnapshot = await userDocRef.get();
+            if (
+                !userDocSnapshot.exists ||
+                !userDocSnapshot.data()?.phoneNumber
+            ) {
+                await userDocRef.set({ phoneNumber }, { merge: true });
+            }
 
             const userDoc = await userOrderReference.get();
             if (!userDoc?.exists) {

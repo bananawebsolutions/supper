@@ -1,5 +1,6 @@
 import SuccessContainer from "../../../components/SuccessContainer";
 import { redirect } from "next/navigation";
+import Stripe from "stripe";
 
 interface Props {
     searchParams: Promise<{
@@ -13,9 +14,23 @@ const SuccessPage = async ({ searchParams }: Props) => {
     if (!session_id) {
         redirect("/");
     }
+
+    let phoneNumber: string | null = null;
+    if (process.env.STRIPE_SECRET_KEY && session_id) {
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+            apiVersion: "2025-02-24.acacia",
+        });
+        try {
+            const session = await stripe.checkout.sessions.retrieve(session_id);
+            phoneNumber = session.customer_details?.phone || null;
+        } catch (e) {
+            // ignore error, phoneNumber remains null
+        }
+    }
+
     return (
         <div>
-            <SuccessContainer id={session_id} />
+            <SuccessContainer id={session_id} phoneNumber={phoneNumber} />
         </div>
     );
 };

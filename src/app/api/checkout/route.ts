@@ -146,6 +146,9 @@ export const POST = async (req: NextRequest) => {
             line_items: extractingItems,
             mode: "payment",
             locale: "es",
+            phone_number_collection: {
+                enabled: true,
+            },
             success_url: `${origin}/success/?session_id={CHECKOUT_SESSION_ID}&client_id=${clientId}&shipping_method=${shippingMethod}&selected_hour=${selectedHour}`,
             cancel_url: `${origin}/cancel/?cancelled=true`,
             metadata: {
