@@ -14,7 +14,7 @@ const SignInPage = async () => {
 
     return (
         <Container className="py-20 flex flex-col justify-center items-center min-h-[70vh]">
-            <div className="p-10 bg-gray-100 rounded-2xl sm:min-w-[500px]">
+            <div className="p-10 bg-gray-100 rounded-2xl sm:min-w-[500px] sm: max-w-[500px]">
                 <div className="flex flex-col mt-4 gap-3">
                     <h2 className="font-bold text-lg md:text-xl">
                         Inicia sesión o Regístrate
