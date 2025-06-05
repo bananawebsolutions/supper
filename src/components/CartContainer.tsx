@@ -96,7 +96,7 @@ const CartContainer = ({ session }: Props) => {
 
         setTotalAmount(price);
 
-        if (price > 350) {
+        if (price > 300) {
             setShipping(0);
         } else {
             setShipping(shippingCost);
