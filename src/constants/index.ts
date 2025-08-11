@@ -1,45 +1,75 @@
 export const navBarList = [
-    { title: "Categorías", link: "/categorias" },
-    { title: "Paquetes", link: "/paquetes" },
-    { title: "Todos los Productos", link: "/productos" },
+  // { title: "Categorías", link: "/categorias" },
+  // { title: "Paquetes", link: "/paquetes" },
+  {
+    title: "Frutas y Verduras",
+    link: "/productos?categoria=frutas-y-verduras",
+  },
+  { title: "Abarrotes", link: "/productos?categoria=abarrotes" },
+  {
+    title: "Granos y Semillas",
+    link: "/productos?categoria=granos-y-semillas",
+  },
+  {
+    title: "Condimentos y Especias",
+    link: "/productos?categoria=condimentos-y-especias",
+  },
+  {
+    title: "Chiles Secos",
+    link: "/productos?categoria=chiles-secos",
+  },
+  {
+    title: "Helados y Paletas",
+    link: "/productos?categoria=helados-y-paletas",
+  },
+  { title: "Todos los Productos", link: "/productos" },
 ];
 
 export const footerData = [
-    {
-        _id: 2221,
-        title: "Navegación",
-        listItem: [
-            {
-                _id: "001",
-                listData: [
-                    { name: "Todos los productos", link: "/productos" },
-                    { name: "Paquetes", link: "/paquetes" },
-                    { name: "Categorías", link: "/categorias" },
-                ],
-            },
+  {
+    _id: 2221,
+    title: "Navegación",
+    listItem: [
+      {
+        _id: "001",
+        listData: [
+          // { name: "Paquetes", link: "/paquetes" },
+          // { name: "Categorías", link: "/categorias" },
+          {
+            name: "Frutas y Verduras",
+            link: "/productos?categoria=frutas-y-verduras",
+          },
+          { name: "Abarrotes", link: "/productos?categoria=abarrotes" },
+          {
+            name: "Helados y Paletas",
+            link: "/productos?categoria=helados-y-paletas",
+          },
+          { name: "Todos los Productos", link: "/productos" },
         ],
-    },
-    {
-        _id: 2222,
-        title: "Información",
-        listItem: [
-            {
-                _id: "002",
-                listData: [
-                    {
-                        name: "Aviso de Privacidad",
-                        link: "/aviso-privacidad",
-                    },
-                    {
-                        name: "Términos y Condiciones",
-                        link: "/terminos-y-condiciones",
-                    },
-                    {
-                        name: "Contacto",
-                        link: "https://wa.me/525652588800",
-                    },
-                ],
-            },
+      },
+    ],
+  },
+  {
+    _id: 2222,
+    title: "Información",
+    listItem: [
+      {
+        _id: "002",
+        listData: [
+          {
+            name: "Aviso de Privacidad",
+            link: "/aviso-privacidad",
+          },
+          {
+            name: "Términos y Condiciones",
+            link: "/terminos-y-condiciones",
+          },
+          {
+            name: "Contacto",
+            link: "https://wa.me/525652588800",
+          },
         ],
-    },
+      },
+    ],
+  },
 ];
