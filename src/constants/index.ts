@@ -33,17 +33,7 @@ export const footerData = [
       {
         _id: "001",
         listData: [
-          // { name: "Paquetes", link: "/paquetes" },
-          // { name: "Categorías", link: "/categorias" },
-          {
-            name: "Frutas y Verduras",
-            link: "/productos?categoria=frutas-y-verduras",
-          },
-          { name: "Abarrotes", link: "/productos?categoria=abarrotes" },
-          {
-            name: "Helados y Paletas",
-            link: "/productos?categoria=helados-y-paletas",
-          },
+          { name: "Categorías", link: "/categorias" },
           { name: "Todos los Productos", link: "/productos" },
         ],
       },
