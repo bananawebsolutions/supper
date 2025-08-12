@@ -7,14 +7,14 @@ import EndBanner from "../../components/EndBanner";
 import Popup from "../../components/Popup";
 
 export default function Home() {
-    return (
-        <Container className="py-10">
-            <Popup />
-            <Banner />
-            <Features />
-            <BestSellerProductList />
-            <OffersProductList />
-            <EndBanner />
-        </Container>
-    );
+  return (
+    <Container className="py-10">
+      <Popup />
+      <Banner />
+      <Features />
+      <BestSellerProductList />
+      <OffersProductList />
+      <EndBanner />
+    </Container>
+  );
 }
