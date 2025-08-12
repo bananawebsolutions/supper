@@ -7,17 +7,17 @@ import Loader from "./Loader";
 import useStripe from "../app/hooks/useStripe";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-    useStripe();
-    return (
-        <Provider store={store}>
-            <PersistGate
-                loading={<Loader size={48} color="#DD4952" />}
-                persistor={persistor}
-            >
-                {children}
-            </PersistGate>
-        </Provider>
-    );
+  useStripe();
+  return (
+    <Provider store={store}>
+      <PersistGate
+        loading={<Loader size={48} color="#DD4952" />}
+        persistor={persistor}
+      >
+        {children}
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default Layout;
