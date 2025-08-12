@@ -23,7 +23,7 @@ const Header = () => {
         <div className="hidden md:inline-flex items-center flex-wrap justify-center gap-5">
           {navBarList?.map((item) => (
             <nav key={item.title} className="relative group">
-              <Link href={item.link} className="navBarItem">
+              <Link href={item.link} className="navBarItem font-medium">
                 {item?.title}
               </Link>
             </nav>
