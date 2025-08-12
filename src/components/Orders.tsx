@@ -22,9 +22,9 @@ import {
 import FormattedPrice from "./FormattedPrice";
 import Button from "./Button";
 import { AnimatePresence, motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { addToCartBatch } from "../lib/redux/features/cart/cartSlice";
-import toast from "react-hot-toast";
+// import { useDispatch } from "react-redux";
+// import { addToCartBatch } from "../lib/redux/features/cart/cartSlice";
+// import toast from "react-hot-toast";
 
 interface Order {
   id: string;
