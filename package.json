@@ -19,7 +19,7 @@
     "firebase-admin": "^13.4.0",
     "framer-motion": "^12.23.12",
     "next": "^15.4.6",
-    "next-auth": "^4.24.11",
+    "next-auth": "^5.0.0-beta.29",
     "next-sanity": "^10.0.10",
     "nodemailer": "^7.0.5",
     "react": "^19.1.1",

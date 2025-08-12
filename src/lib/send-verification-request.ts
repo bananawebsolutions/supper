@@ -1,39 +1,42 @@
 import { EmailTemplate } from "../components/EmailTemplate";
 import getResend from "./getResend";
 
-interface VerificationRequestParams {
+export async function sendVerificationRequest(params: {
   identifier: string;
-  provider: {
-    from: string;
-  };
   url: string;
-}
-
-export async function sendVerificationRequest(
-  params: VerificationRequestParams,
-) {
+  expires: Date;
+  provider: {
+    from?: string;
+    server?: string;
+    id: string;
+    name: string;
+    type: string;
+  };
+  token: string;
+  theme: any;
+  request: Request;
+}) {
   const resend = getResend();
 
-  const {
-    identifier: email,
-    url,
-    provider: { from },
-  } = params;
+  const { identifier: email, url, provider } = params;
+
+  const from = provider.from || "no-reply@registrosupper.store";
 
   try {
     const { data, error } = await resend.emails.send({
       from: from,
       to: email,
-      subject: "Inicio de sesión",
+      subject: "Inicio de sesión - Supper",
       // @ts-expect-error unknown error
       react: EmailTemplate({ magicLink: url }),
     });
 
     if (error) {
-      return Response.json({ error }, { status: 500 });
+      console.error("Email send error:", error);
+      return;
     }
-    return Response.json(data);
+    console.log("Email sent successfully:", data);
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    console.error("Email send error:", error);
   }
 }

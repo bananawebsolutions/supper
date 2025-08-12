@@ -12,11 +12,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
     EmailProvider({
+      server: 465,
       from: "no-reply@registrosupper.store",
-      sendVerificationRequest: async (params) => {
-        await sendVerificationRequest(params);
-      },
+      sendVerificationRequest,
     }),
   ],
   adapter: FirestoreAdapter(firestore),
+  session: {
+    strategy: "database",
+  },
+  callbacks: {
+    session: async ({ session, user }) => {
+      if (session?.user && user) {
+        session.user.id = user.id;
+      }
+      return session;
+    },
+  },
 });

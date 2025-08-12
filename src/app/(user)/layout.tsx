@@ -5,9 +5,10 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Layout from "../../components/Layout";
 import { Toaster } from "react-hot-toast";
-import { SessionProvider } from "next-auth/react";
+import SessionProvider from "../../components/SessionProvider";
 import WhatsAppButton from "../../components/WhatsappButton";
 import Script from "next/script";
+import { auth } from "../../../auth";
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -25,11 +26,12 @@ export const metadata: Metadata = {
   description: "Tienda online de frutas, verduras y abarrotes.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang="es">
       <head>
@@ -64,7 +66,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
-        <SessionProvider>
+        <SessionProvider session={session}>
           <Layout>
             <Header />
             {children}
