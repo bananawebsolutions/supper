@@ -20,15 +20,10 @@ const categoriesQuery = groq`*[_type == "category"] {
 ...
 }|order(_createdAt asc)`;
 
-const packagesQuery = groq`*[_type == "package"] {
-...
-}`;
-
 export {
-    bannerQuery,
-    productsQuery,
-    bestSellerQuery,
-    offersQuery,
-    categoriesQuery,
-    packagesQuery,
+  bannerQuery,
+  productsQuery,
+  bestSellerQuery,
+  offersQuery,
+  categoriesQuery,
 };
