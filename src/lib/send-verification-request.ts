@@ -27,7 +27,7 @@ export async function sendVerificationRequest(params: {
       from: from,
       to: email,
       subject: "Inicio de sesión - Supper",
-      // @ts-expect-error unknown error
+      // @ts-expect-error ReactNode is not typed
       react: EmailTemplate({ magicLink: url }),
     });
 
