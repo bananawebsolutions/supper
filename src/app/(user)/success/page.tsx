@@ -3,36 +3,36 @@ import { redirect } from "next/navigation";
 import Stripe from "stripe";
 
 interface Props {
-    searchParams: Promise<{
-        session_id: string | null;
-    }>;
+  searchParams: Promise<{
+    session_id: string | null;
+  }>;
 }
 
 const SuccessPage = async ({ searchParams }: Props) => {
-    const { session_id } = await searchParams;
+  const { session_id } = await searchParams;
 
-    if (!session_id) {
-        redirect("/");
+  if (!session_id) {
+    redirect("/");
+  }
+
+  let phoneNumber: string | null = null;
+  if (process.env.STRIPE_SECRET_KEY && session_id) {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2025-07-30.basil",
+    });
+    try {
+      const session = await stripe.checkout.sessions.retrieve(session_id);
+      phoneNumber = session.customer_details?.phone || null;
+    } catch (e) {
+      console.error("Error retrieving session:", e);
     }
+  }
 
-    let phoneNumber: string | null = null;
-    if (process.env.STRIPE_SECRET_KEY && session_id) {
-        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-            apiVersion: "2025-02-24.acacia",
-        });
-        try {
-            const session = await stripe.checkout.sessions.retrieve(session_id);
-            phoneNumber = session.customer_details?.phone || null;
-        } catch (e) {
-            console.error("Error retrieving session:", e);
-        }
-    }
-
-    return (
-        <div>
-            <SuccessContainer id={session_id} phoneNumber={phoneNumber} />
-        </div>
-    );
+  return (
+    <div>
+      <SuccessContainer id={session_id} phoneNumber={phoneNumber} />
+    </div>
+  );
 };
 
 export default SuccessPage;
