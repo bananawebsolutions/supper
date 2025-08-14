@@ -13,7 +13,7 @@ export async function sendVerificationRequest(params: {
     type: string;
   };
   token: string;
-  theme: any;
+  theme: unknown;
   request: Request;
 }) {
   const resend = getResend();
